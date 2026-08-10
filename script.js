@@ -1,7 +1,6 @@
 // ===== CONFIGURAÇÃO RÁPIDA =====
-// Troque apenas o número abaixo pelo WhatsApp real.
 // Formato: código do país + DDD + número, somente dígitos.
-const WHATSAPP_NUMBER = '5511999999999';
+const WHATSAPP_NUMBER = '5511957196179';
 const DEFAULT_MESSAGE = 'Olá! Vim pelo site e gostaria de solicitar um orçamento para minha obra.';
 
 function whatsappUrl(message = DEFAULT_MESSAGE) {
@@ -50,7 +49,6 @@ window.addEventListener('resize', () => {
   if (window.innerWidth > 980) closeMenu();
 });
 
-// Fecha o menu se o usuário tocar fora dele em telas menores.
 document.addEventListener('click', (event) => {
   if (window.innerWidth > 980 || !nav?.classList.contains('open')) return;
   const target = event.target;
