@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="ux.css" />
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -19,19 +20,13 @@
       <a class="brand" href="#inicio" aria-label="Concreto Brasil - início"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-text"><strong>CONCRETO</strong><small>BRASIL</small></span></a>
       <nav class="nav" id="main-nav" aria-label="Navegação principal"><a href="#solucoes">Soluções</a><a href="#diferenciais">Diferenciais</a><a href="#atendimento">Atendimento</a><a href="#empresa">Quem somos</a><a href="#faq">Dúvidas</a><a class="mobile-nav-cta js-whatsapp" href="#">Pedir orçamento</a></nav>
       <a class="btn btn-primary nav-cta js-whatsapp" href="#">Pedir orçamento</a>
-      <button class="menu-toggle" aria-label="Abrir menu" aria-controls="main-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="main-nav" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
   <main id="conteudo">
     <section class="hero"><div class="hero-bg" aria-hidden="true"></div><div class="container hero-grid">
-      <div class="hero-content">
-        <div class="eyebrow">CONCRETO USINADO COM AGILIDADE</div>
-        <h1>Seu concreto na obra, <span>na hora certa.</span></h1>
-        <p>Atendimento rápido para concreto usinado, bombeamento e materiais de construção. Da cotação à programação da entrega, tudo em um único canal.</p>
-        <div class="hero-actions"><a class="btn btn-primary btn-lg js-whatsapp" href="#"><span class="wa-dot" aria-hidden="true"></span> Solicitar orçamento</a><a class="btn btn-ghost btn-lg" href="#solucoes">Conhecer soluções</a></div>
-        <div class="trust-row"><div><strong>Atendimento ágil</strong><span>Resposta comercial rápida</span></div><div><strong>Entrega programada</strong><span>Planejamento para sua obra</span></div><div><strong>Suporte humano</strong><span>Do pedido à concretagem</span></div></div>
-      </div>
+      <div class="hero-content"><div class="eyebrow">CONCRETO USINADO COM AGILIDADE</div><h1>Seu concreto na obra, <span>na hora certa.</span></h1><p>Atendimento rápido para concreto usinado, bombeamento e materiais de construção. Da cotação à programação da entrega, tudo em um único canal.</p><div class="hero-actions"><a class="btn btn-primary btn-lg js-whatsapp" href="#"><span class="wa-dot" aria-hidden="true"></span> Solicitar orçamento</a><a class="btn btn-ghost btn-lg" href="#solucoes">Conhecer soluções</a></div><div class="trust-row"><div><strong>Atendimento ágil</strong><span>Resposta comercial rápida</span></div><div><strong>Entrega programada</strong><span>Planejamento para sua obra</span></div><div><strong>Suporte humano</strong><span>Do pedido à concretagem</span></div></div></div>
       <aside class="quote-card" aria-label="Orçamento rápido"><div class="quote-icon" aria-hidden="true">▰</div><span class="quote-kicker">ORÇAMENTO RÁPIDO</span><h2>Comece em menos de 1 minuto.</h2><p>Para agilizar, tenha em mãos:</p><ul class="quote-list"><li>Cidade da obra</li><li>Volume aproximado</li><li>Data desejada</li></ul><a class="btn btn-primary btn-block js-whatsapp" data-message="Olá! Quero solicitar um orçamento. Minha cidade é: " href="#">Continuar no WhatsApp</a><small>Sem compromisso • Atendimento humano</small></aside>
     </div></section>
 
@@ -57,7 +52,8 @@
 
   <footer class="footer"><div class="container footer-grid"><div><a class="brand brand-footer" href="#inicio"><span class="brand-mark"><span></span><span></span><span></span></span><span class="brand-text"><strong>CONCRETO</strong><small>BRASIL</small></span></a><p>Soluções para construção com atendimento comercial direto pelo WhatsApp.</p></div><div><strong>Navegação</strong><a href="#solucoes">Soluções</a><a href="#diferenciais">Diferenciais</a><a href="#empresa">Quem somos</a></div><div><strong>Atendimento</strong><a class="js-whatsapp" href="#">Solicitar orçamento</a><a class="js-whatsapp" data-message="Olá! Quero verificar atendimento. Minha cidade é: " href="#">Verificar região</a></div></div><div class="container footer-bottom"><span>© <span id="year"></span> Concreto Brasil.</span><span>Landing page comercial.</span></div></footer>
 
-  <a class="whatsapp-float js-whatsapp" href="#" aria-label="Solicitar orçamento pelo WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.47c-.26-.13-1.54-.76-1.78-.85-.24-.09-.41-.13-.59.13-.17.26-.67.85-.82 1.02-.15.17-.3.2-.56.07-.26-.13-1.09-.4-2.08-1.29-.77-.69-1.29-1.53-1.44-1.79-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.46.13-.15.17-.26.26-.43.09-.17.04-.33-.02-.46-.07-.13-.59-1.41-.8-1.93-.21-.51-.43-.44-.59-.45h-.5c-.17 0-.46.07-.69.33-.24.26-.91.89-.91 2.17s.93 2.52 1.06 2.69c.13.17 1.83 2.8 4.44 3.93.62.27 1.1.43 1.48.55.62.2 1.19.17 1.64.1.5-.07 1.54-.63 1.76-1.24.22-.61.22-1.13.15-1.24-.06-.11-.23-.18-.49-.31ZM16.03 4.8c-6.18 0-11.2 5.02-11.2 11.2 0 1.97.51 3.9 1.49 5.59L4.74 27.2l5.74-1.51a11.16 11.16 0 0 0 5.54 1.41h.01c6.18 0 11.2-5.02 11.2-11.2 0-2.99-1.16-5.8-3.28-7.92A11.12 11.12 0 0 0 16.03 4.8Zm0 20.41h-.01a9.3 9.3 0 0 1-4.74-1.3l-.34-.2-3.41.9.91-3.32-.22-.34a9.3 9.3 0 1 1 7.81 4.26Z"/></svg><span><strong>Orçamento</strong><small>Fale pelo WhatsApp</small></span></a>
-  <div class="mobile-cta"><a class="js-whatsapp" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.47c-.26-.13-1.54-.76-1.78-.85-.24-.09-.41-.13-.59.13-.17.26-.67.85-.82 1.02-.15.17-.3.2-.56.07-.26-.13-1.09-.4-2.08-1.29-.77-.69-1.29-1.53-1.44-1.79-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.46.13-.15.17-.26.26-.43.09-.17.04-.33-.02-.46-.07-.13-.59-1.41-.8-1.93-.21-.51-.43-.44-.59-.45h-.5c-.17 0-.46.07-.69.33-.24.26-.91.89-.91 2.17s.93 2.52 1.06 2.69c.13.17 1.83 2.8 4.44 3.93.62.27 1.1.43 1.48.55.62.2 1.19.17 1.64.1.5-.07 1.54-.63 1.76-1.24.22-.61.22-1.13.15-1.24-.06-.11-.23-.18-.49-.31Z"/></svg><span>Solicitar orçamento</span></a></div>
+  <a class="whatsapp-float js-whatsapp" href="#" aria-label="Solicitar orçamento pelo WhatsApp"><span aria-hidden="true" style="font-size:24px">●</span><span><strong>Orçamento</strong><small>Fale pelo WhatsApp</small></span></a>
+  <div class="mobile-cta"><a class="js-whatsapp" href="#" aria-label="Solicitar orçamento pelo WhatsApp"><span aria-hidden="true" style="font-size:20px">●</span><span>Solicitar orçamento</span></a></div>
   <script src="script.js"></script>
-</body></html>
+</body>
+</html>
