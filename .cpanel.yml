@@ -7,3 +7,4 @@ deployment:
     - /bin/cp styles.css $DEPLOYPATH
     - /bin/cp ux.css $DEPLOYPATH
     - /bin/cp script.js $DEPLOYPATH
+    - /bin/cp favicon-32.png $DEPLOYPATH
