@@ -7,12 +7,28 @@ function whatsappUrl(message = DEFAULT_MESSAGE) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+function conversionUrl(message = DEFAULT_MESSAGE) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('lead', '1');
+  url.searchParams.set('m', message);
+  url.hash = '';
+  return url.toString();
+}
+
+const params = new URLSearchParams(window.location.search);
+if (params.get('lead') === '1') {
+  const message = params.get('m') || DEFAULT_MESSAGE;
+  setTimeout(() => {
+    window.location.replace(whatsappUrl(message));
+  }, 1200);
+}
+
 const whatsappLinks = document.querySelectorAll('.js-whatsapp');
 whatsappLinks.forEach((link) => {
   const message = link.dataset.message || DEFAULT_MESSAGE;
-  link.href = whatsappUrl(message);
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
+  link.href = conversionUrl(message);
+  link.removeAttribute('target');
+  link.removeAttribute('rel');
 });
 
 const year = document.getElementById('year');
