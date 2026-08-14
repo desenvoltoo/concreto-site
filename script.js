@@ -1,6 +1,6 @@
 // ===== CONFIGURAÇÃO RÁPIDA =====
 // Formato: código do país + DDD + número, somente dígitos.
-const WHATSAPP_NUMBER = '5511957196179';
+const WHATSAPP_NUMBER = '5511956023851';
 const DEFAULT_MESSAGE = 'Olá! Vim pelo site e gostaria de solicitar um orçamento para minha obra.';
 
 function whatsappUrl(message = DEFAULT_MESSAGE) {
