@@ -3,21 +3,16 @@
 const WHATSAPP_NUMBER = '5511956023851';
 const DEFAULT_MESSAGE = 'Olá! Vim pelo site e gostaria de solicitar um orçamento para minha obra.';
 
-// Google Ads: informe aqui o valor no formato AW-XXXXXXXXX/XXXXXXXXXXXXXXX
-// quando a ação de conversão de clique no WhatsApp estiver criada no Google Ads.
-// Enquanto estiver vazio, o site continua funcionando normalmente e abre o WhatsApp.
-const GOOGLE_ADS_SEND_TO = '';
+// Google Ads: conversão "Lead - WhatsApp ConcretoBrasils".
+const GOOGLE_ADS_SEND_TO = 'AW-18387900627/GyYTCIGm3OIcENOxhMBE';
 
 function whatsappUrl(message = DEFAULT_MESSAGE) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
 function reportGoogleAdsConversion(url) {
-  // Se a tag do Google Ads e o identificador da conversão estiverem configurados,
-  // registra o clique e só então segue para o WhatsApp.
   if (GOOGLE_ADS_SEND_TO && typeof window.gtag === 'function') {
     let navigated = false;
-
     const go = () => {
       if (navigated) return;
       navigated = true;
@@ -31,8 +26,7 @@ function reportGoogleAdsConversion(url) {
       event_callback: go
     });
 
-    // Evita que uma falha/bloqueio da tag impeça o WhatsApp de abrir.
-    window.setTimeout(go, 800);
+    window.setTimeout(go, 1000);
     return true;
   }
 
@@ -44,9 +38,6 @@ const whatsappLinks = document.querySelectorAll('.js-whatsapp');
 whatsappLinks.forEach((link) => {
   const message = link.dataset.message || DEFAULT_MESSAGE;
   const url = whatsappUrl(message);
-
-  // A página de destino do Google Ads permanece sendo a landing page normal.
-  // O WhatsApp só é acessado depois do clique do usuário.
   link.href = url;
   link.removeAttribute('target');
   link.removeAttribute('rel');
