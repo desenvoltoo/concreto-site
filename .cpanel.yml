@@ -10,5 +10,7 @@ deployment:
     - /bin/cp ux.css $DEPLOYPATH
     - /bin/cp script.js $DEPLOYPATH
     - /bin/cp favicon-32.png $DEPLOYPATH
+    - /bin/cp robots.txt $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
     - /bin/cp produtos/index.html $DEPLOYPATH/produtos/index.html
     - /bin/cp sobre/index.html $DEPLOYPATH/sobre/index.html
