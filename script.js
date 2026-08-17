@@ -26,6 +26,7 @@ function reportGoogleAdsConversion(url) {
       event_callback: go
     });
 
+    // Nunca bloqueia o atendimento caso a tag do Google demore.
     window.setTimeout(go, 1000);
     return true;
   }
@@ -47,6 +48,15 @@ whatsappLinks.forEach((link) => {
     reportGoogleAdsConversion(url);
   });
 });
+
+// Transparência e navegação: links permanentes para páginas institucionais.
+const footerBottom = document.querySelector('.footer-bottom');
+if (footerBottom && !footerBottom.querySelector('.legal-links')) {
+  const legal = document.createElement('span');
+  legal.className = 'legal-links';
+  legal.innerHTML = '<a href="/produtos/">Produtos</a> · <a href="/sobre/">Sobre nós</a> · <a href="/politica-de-privacidade/">Privacidade</a> · <a href="/termos/">Termos de uso</a>';
+  footerBottom.appendChild(legal);
+}
 
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
