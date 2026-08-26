@@ -1,12 +1,38 @@
 DirectoryIndex index.html
 Options -Indexes
 
-# Configuração mínima para máxima compatibilidade com crawlers e dispositivos.
-# O anúncio já usa HTTPS diretamente, então evitamos redirects no Apache.
-
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
 # Preserve ACME/AutoSSL validation paths.
 RewriteRule ^\.well-known/acme-challenge/ - [L]
+
+# Canonical host: sempre sem www.
+RewriteCond %{HTTP_HOST} ^www\.concretobrasils\.online$ [NC]
+RewriteRule ^ https://concretobrasils.online%{REQUEST_URI} [R=301,L,NE]
+
+# Remove index.html das URLs públicas.
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
+RewriteRule ^(.*/)?index\.html$ https://concretobrasils.online/$1 [R=301,L,NE]
+</IfModule>
+
+# A landing /ads/ existe somente para campanhas e não deve concorrer no índice orgânico.
+<IfModule mod_setenvif.c>
+SetEnvIf Request_URI "^/ads(?:/|$)" NOINDEX_ADS=1
+</IfModule>
+<IfModule mod_headers.c>
+Header set X-Robots-Tag "noindex, follow" env=NOINDEX_ADS
+
+# Declara explicitamente a URL canônica das páginas indexáveis.
+SetEnvIf Request_URI "^/$" CANON_HOME=1
+SetEnvIf Request_URI "^/produtos/?$" CANON_PRODUTOS=1
+SetEnvIf Request_URI "^/sobre/?$" CANON_SOBRE=1
+SetEnvIf Request_URI "^/politica-de-privacidade/?$" CANON_PRIVACIDADE=1
+SetEnvIf Request_URI "^/termos/?$" CANON_TERMOS=1
+
+Header set Link "<https://concretobrasils.online/>; rel=\"canonical\"" env=CANON_HOME
+Header set Link "<https://concretobrasils.online/produtos/>; rel=\"canonical\"" env=CANON_PRODUTOS
+Header set Link "<https://concretobrasils.online/sobre/>; rel=\"canonical\"" env=CANON_SOBRE
+Header set Link "<https://concretobrasils.online/politica-de-privacidade/>; rel=\"canonical\"" env=CANON_PRIVACIDADE
+Header set Link "<https://concretobrasils.online/termos/>; rel=\"canonical\"" env=CANON_TERMOS
 </IfModule>
