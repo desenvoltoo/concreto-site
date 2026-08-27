@@ -1,6 +1,6 @@
 // Concreto Brasil — JS global
 const WHATSAPP_NUMBER = '5511956023851';
-const DEFAULT_MESSAGE = 'Olá! Vim pelo site e gostaria de solicitar um orçamento para minha obra.';
+const DEFAULT_MESSAGE = 'Olá! Vim pelo site e gostaria de solicitar um orçamento para minha obra. Minha cidade é: ';
 const GOOGLE_ADS_ID = 'AW-18387900627';
 const GOOGLE_ADS_SEND_TO = 'AW-18387900627/GyYTCIGm3OIcENOxhMBE';
 
@@ -24,38 +24,7 @@ function whatsappUrl(message = DEFAULT_MESSAGE){
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-function normalizeBrazilPhone(value){
-  let digits = String(value || '').replace(/\D/g,'');
-  if(digits.startsWith('00')) digits = digits.slice(2);
-  if(digits.startsWith('55') && digits.length >= 12) return `+${digits}`;
-  if(digits.length === 10 || digits.length === 11) return `+55${digits}`;
-  return null;
-}
-
-function splitName(fullName){
-  const parts = String(fullName || '').trim().replace(/\s+/g,' ').split(' ').filter(Boolean);
-  return {firstName:parts[0] || '', lastName:parts.length > 1 ? parts.slice(1).join(' ') : ''};
-}
-
-function setEnhancedConversionUserData({name, phone}){
-  if(typeof window.gtag !== 'function') return false;
-  const phoneNumber = normalizeBrazilPhone(phone);
-  if(!phoneNumber) return false;
-  const {firstName,lastName} = splitName(name);
-  const userData = {phone_number:phoneNumber};
-  if(firstName || lastName){
-    userData.address = {
-      ...(firstName ? {first_name:firstName} : {}),
-      ...(lastName ? {last_name:lastName} : {}),
-      country:'BR'
-    };
-  }
-  window.gtag('set','user_data',userData);
-  return true;
-}
-
-function reportGoogleAdsConversion(url,userData=null){
-  if(userData) setEnhancedConversionUserData(userData);
+function reportGoogleAdsConversion(url){
   if(GOOGLE_ADS_SEND_TO && typeof window.gtag === 'function'){
     let navigated = false;
     const go = () => {
@@ -63,10 +32,19 @@ function reportGoogleAdsConversion(url,userData=null){
       navigated = true;
       window.location.href = url;
     };
-    window.gtag('event','conversion',{send_to:GOOGLE_ADS_SEND_TO,value:1.0,currency:'BRL',event_callback:go});
-    window.setTimeout(go,1200);
+
+    window.gtag('event','conversion',{
+      send_to:GOOGLE_ADS_SEND_TO,
+      value:1.0,
+      currency:'BRL',
+      event_callback:go,
+      event_timeout:650
+    });
+
+    window.setTimeout(go,700);
     return true;
   }
+
   window.location.href = url;
   return true;
 }
@@ -86,7 +64,7 @@ function installShell(){
   if(!document.querySelector('link[href^="/shell.css"]')){
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/shell.css?v=20260827-1';
+    link.href = '/shell.css?v=20260827-2';
     document.head.appendChild(link);
   }
 
@@ -132,6 +110,7 @@ function installShell(){
     document.body.classList.remove('cb-menu-open');
     if(restoreFocus) toggle.focus();
   };
+
   const openMenu = () => {
     nav.classList.add('open');
     toggle.setAttribute('aria-expanded','true');
@@ -149,39 +128,18 @@ function installShell(){
   });
   window.addEventListener('resize',() => { if(window.innerWidth > 980) closeMenu(); });
 
-  const update = () => shell.classList.toggle('is-scrolled',(window.scrollY || 0) > 16);
+  let ticking = false;
+  const update = () => {
+    shell.classList.toggle('is-scrolled',(window.scrollY || 0) > 16);
+    ticking = false;
+  };
   update();
-  window.addEventListener('scroll',update,{passive:true});
-}
-
-function setupQuoteForm(){
-  const quoteForm = document.getElementById('quote-form');
-  if(!quoteForm) return;
-  const nameInput = quoteForm.querySelector('[name="name"]');
-  const phoneInput = quoteForm.querySelector('[name="phone"]');
-  const errorBox = quoteForm.querySelector('.form-error');
-
-  phoneInput?.addEventListener('input',() => {
-    const digits = phoneInput.value.replace(/\D/g,'').slice(0,11);
-    if(digits.length > 10) phoneInput.value = digits.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3').replace(/-$/,'');
-    else if(digits.length > 6) phoneInput.value = digits.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3').replace(/-$/,'');
-    else if(digits.length > 2) phoneInput.value = digits.replace(/(\d{2})(\d+)/,'($1) $2');
-    else if(digits.length) phoneInput.value = digits.replace(/(\d{0,2})/,'($1');
-  });
-
-  quoteForm.addEventListener('submit',event => {
-    event.preventDefault();
-    const name = nameInput?.value.trim() || '';
-    const phone = phoneInput?.value.trim() || '';
-    const normalizedPhone = normalizeBrazilPhone(phone);
-    if(name.length < 2 || !normalizedPhone){
-      if(errorBox){ errorBox.textContent = 'Informe seu nome e um telefone válido com DDD.'; errorBox.hidden = false; }
-      return;
+  window.addEventListener('scroll',() => {
+    if(!ticking){
+      ticking = true;
+      requestAnimationFrame(update);
     }
-    if(errorBox) errorBox.hidden = true;
-    const message = `Olá! Quero solicitar um orçamento de concreto.\nNome: ${name}\nTelefone: ${normalizedPhone}\nMinha cidade é: `;
-    reportGoogleAdsConversion(whatsappUrl(message),{name,phone:normalizedPhone});
-  });
+  },{passive:true});
 }
 
 function setupWhatsappLinks(){
@@ -233,13 +191,16 @@ function setupAnchors(){
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(link => {
     link.addEventListener('click',event => {
-      const target = document.querySelector(link.getAttribute('href'));
+      const selector = link.getAttribute('href');
+      if(!selector) return;
+      let target = null;
+      try{ target = document.querySelector(selector); }catch(_){ return; }
       if(!target) return;
       event.preventDefault();
       const headerHeight = document.getElementById('site-header')?.offsetHeight || 0;
       const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
       window.scrollTo({top,behavior:reduceMotion ? 'auto' : 'smooth'});
-      history.replaceState(null,'',link.getAttribute('href'));
+      history.replaceState(null,'',selector);
     });
   });
 }
@@ -267,7 +228,6 @@ function setupImageFallback(){
 
 function boot(){
   installShell();
-  setupQuoteForm();
   setupWhatsappLinks();
   setupReveal();
   setupProgress();
