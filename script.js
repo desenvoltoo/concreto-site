@@ -32,7 +32,6 @@ function reportGoogleAdsConversion(url){
       navigated = true;
       window.location.href = url;
     };
-
     window.gtag('event','conversion',{
       send_to:GOOGLE_ADS_SEND_TO,
       value:1.0,
@@ -40,11 +39,9 @@ function reportGoogleAdsConversion(url){
       event_callback:go,
       event_timeout:650
     });
-
     window.setTimeout(go,700);
     return true;
   }
-
   window.location.href = url;
   return true;
 }
@@ -54,7 +51,6 @@ function currentSection(){
   if(p === '/') return 'inicio';
   if(p === '/produtos' || p === '/concreto-usinado' || p === '/bombeamento-de-concreto') return 'produtos';
   if(p === '/sobre') return 'sobre';
-  if(p === '/orcamento') return 'orcamento';
   return '';
 }
 
@@ -64,7 +60,7 @@ function installShell(){
   if(!document.querySelector('link[href^="/shell.css"]')){
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/shell.css?v=20260827-2';
+    link.href = '/shell.css?v=20260827-3';
     document.head.appendChild(link);
   }
 
@@ -77,7 +73,7 @@ function installShell(){
     <div class="cb-topbar">
       <div class="cb-topbar-inner">
         <span>Concreto usinado e bombeamento para obras residenciais, comerciais e industriais</span>
-        <a href="/orcamento/">Solicitar orçamento <span aria-hidden="true">→</span></a>
+        <a class="js-whatsapp" href="#">Solicitar orçamento <span aria-hidden="true">→</span></a>
       </div>
     </div>
     <div class="cb-nav">
@@ -90,9 +86,9 @@ function installShell(){
         <a href="/produtos/"${current('produtos')}>Produtos</a>
         <a href="/sobre/"${current('sobre')}>Sobre</a>
         <a href="/#faq">Dúvidas</a>
-        <a class="cb-mobile-budget" href="/orcamento/"${current('orcamento')}>Solicitar orçamento</a>
+        <a class="cb-mobile-budget js-whatsapp" href="#">Solicitar orçamento</a>
       </nav>
-      <a class="cb-budget" href="/orcamento/"${current('orcamento')}>Orçamento</a>
+      <a class="cb-budget js-whatsapp" href="#">Orçamento</a>
       <button class="cb-toggle" type="button" aria-label="Abrir menu" aria-controls="cb-main-nav" aria-expanded="false"><i></i><i></i><i></i></button>
     </div>`;
 
@@ -102,7 +98,6 @@ function installShell(){
 
   const nav = shell.querySelector('.cb-menu');
   const toggle = shell.querySelector('.cb-toggle');
-
   const closeMenu = ({restoreFocus=false}={}) => {
     nav.classList.remove('open');
     toggle.setAttribute('aria-expanded','false');
@@ -110,7 +105,6 @@ function installShell(){
     document.body.classList.remove('cb-menu-open');
     if(restoreFocus) toggle.focus();
   };
-
   const openMenu = () => {
     nav.classList.add('open');
     toggle.setAttribute('aria-expanded','true');
@@ -135,15 +129,16 @@ function installShell(){
   };
   update();
   window.addEventListener('scroll',() => {
-    if(!ticking){
-      ticking = true;
-      requestAnimationFrame(update);
-    }
+    if(!ticking){ ticking = true; requestAnimationFrame(update); }
   },{passive:true});
 }
 
 function setupWhatsappLinks(){
-  document.querySelectorAll('.js-whatsapp').forEach(link => {
+  const links = document.querySelectorAll('.js-whatsapp, a[href="/orcamento/"], a[href="/orcamento"]');
+  links.forEach(link => {
+    if(link.dataset.waBound === '1') return;
+    link.dataset.waBound = '1';
+    link.classList.add('js-whatsapp');
     const url = whatsappUrl(link.dataset.message || DEFAULT_MESSAGE);
     link.href = url;
     link.removeAttribute('target');
