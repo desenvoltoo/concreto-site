@@ -1,63 +1,33 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0f1821" />
-  <meta name="description" content="Solicite orçamento de concreto usinado e bombeamento. Informe seu nome e telefone para iniciar o atendimento pelo WhatsApp." />
-  <title>Orçamento de Concreto Usinado | Concreto Brasil</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-  <link rel="stylesheet" href="/styles.css" />
-  <link rel="stylesheet" href="/ux.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b131b">
+  <meta name="description" content="Solicite orçamento de concreto usinado e bombeamento. Informe seus dados e continue o atendimento pelo WhatsApp.">
+  <link rel="canonical" href="https://concretobrasils.online/orcamento/">
+  <title>Orçamento | Concreto Brasil</title>
+  <link rel="icon" href="/favicon-32.png?v=20260827" sizes="32x32">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20260827-premium2">
+  <link rel="stylesheet" href="/ux.css?v=20260827-premium2">
   <style>
-    .internal-hero{padding:110px 0 70px;background:#0f1821;color:#fff}.internal-hero h1{font-size:clamp(38px,6vw,66px);margin:10px 0 18px}.internal-hero p{max-width:760px;font-size:18px;line-height:1.65;color:#d6dde4}.internal-content{padding:70px 0}.quote-layout{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}.info-box,.quote-box{padding:34px;border:1px solid #dce2e7;border-radius:20px;background:#fff}.info-box h2,.quote-box h2{margin-top:0}.field-list{display:grid;gap:14px;margin:22px 0}.field-item{padding:18px;border-radius:14px;background:#f5f7f9}.field-item strong{display:block;margin-bottom:4px}.field-item span{color:#52606d}.lead-form{display:grid;gap:16px;margin-top:22px}.form-field{display:grid;gap:7px}.form-field label{font-weight:700;color:#17212b}.form-field input{width:100%;box-sizing:border-box;padding:15px 16px;border:1px solid #cfd7df;border-radius:12px;font:inherit;background:#fff;color:#17212b;outline:none}.form-field input:focus{border-color:#7b8794;box-shadow:0 0 0 3px rgba(15,24,33,.08)}.form-error{margin:0;padding:12px 14px;border-radius:10px;background:#fff3f0;color:#9f2f18;font-size:14px}.form-note{margin:0;color:#6a7682;font-size:12px;line-height:1.5}.form-note a{color:inherit;font-weight:700}.back-link{display:inline-block;margin-top:28px;color:#0f1821;font-weight:700;text-decoration:none}@media(max-width:760px){.internal-hero{padding:80px 0 50px}.internal-content{padding:45px 0}.quote-layout{grid-template-columns:1fr}.info-box,.quote-box{padding:26px}}
+    :root{--ink:#111920;--muted:#68737d;--orange:#f05a28;--paper:#f3f5f6;--line:#dce2e6}
+    body{background:var(--paper);color:var(--ink)}
+    .quote-hero{padding:92px 0 54px;background:#0b131b;color:#fff}.quote-hero .kicker{font-size:11px;letter-spacing:.16em;font-weight:800;color:#ff9a78}.quote-hero h1{font-family:Montserrat,sans-serif;font-size:clamp(46px,6vw,74px);line-height:.98;letter-spacing:-.045em;margin:12px 0 20px;max-width:880px}.quote-hero h1 span{color:#ff8a61}.quote-hero p{max-width:720px;color:#d3dbe1;font-size:17px;line-height:1.72;margin:0}
+    .quote-section{padding:66px 0 92px}.quote-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start}.brief,.form-card{border-radius:26px;background:#fff;border:1px solid var(--line);box-shadow:0 22px 55px rgba(15,24,33,.07)}.brief{padding:36px;position:sticky;top:120px}.brief small{color:var(--orange);font-weight:800;letter-spacing:.12em}.brief h2,.form-card h2{font-family:Montserrat,sans-serif;font-size:clamp(28px,3.2vw,40px);line-height:1.08;margin:9px 0 14px}.brief>p,.form-card>p{color:var(--muted);line-height:1.65}.brief-list{margin-top:26px;border-top:1px solid var(--line)}.brief-row{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}.brief-row b{color:var(--orange)}.brief-row strong{display:block;font-size:14px;margin-bottom:3px}.brief-row span{color:var(--muted);font-size:13px;line-height:1.45}
+    .form-card{padding:40px}.lead-form{display:grid;gap:18px;margin-top:28px}.form-field{display:grid;gap:8px}.form-field label{font-weight:800;color:#17212b;font-size:13px}.form-field input{width:100%;padding:17px 18px;border:1px solid #cfd7df;border-radius:14px;font:inherit;background:#fbfcfd;color:#17212b;outline:none;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}.form-field input:focus{background:#fff;border-color:#f05a28;box-shadow:0 0 0 4px rgba(240,90,40,.10)}.form-error{margin:0;padding:12px 14px;border-radius:12px;background:#fff1ed;color:#9f2f18;font-size:14px}.submit{width:100%;min-height:58px;border:0;border-radius:999px;background:var(--orange);color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;box-shadow:0 16px 32px rgba(240,90,40,.22);transition:transform .2s ease,box-shadow .2s ease}.submit:hover{transform:translateY(-1px);box-shadow:0 20px 40px rgba(240,90,40,.28)}.form-note{margin:0;color:#7b858e;font-size:12px;line-height:1.55}.form-note a{font-weight:800}.trust-note{display:flex;gap:10px;align-items:center;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);color:#6b7580;font-size:12px}.trust-note b{color:#20a85a}
+    @media(max-width:900px){.quote-grid{grid-template-columns:1fr}.brief{position:static}}
+    @media(max-width:650px){.quote-hero{padding:68px 0 38px}.quote-hero h1{font-size:clamp(40px,12vw,52px)}.quote-hero p{font-size:15.5px}.quote-section{padding:30px 0 40px}.brief,.form-card{padding:24px 20px;border-radius:20px}.quote-grid{gap:16px}.brief{order:2}.form-card{order:1}}
   </style>
 </head>
 <body>
-  <main>
-    <section class="internal-hero">
-      <div class="container">
-        <span class="eyebrow">ORÇAMENTO RÁPIDO</span>
-        <h1>Solicite seu orçamento de concreto.</h1>
-        <p>Preencha nome e telefone para iniciar o atendimento. Em seguida, você será direcionado ao WhatsApp para informar os detalhes da obra.</p>
-      </div>
-    </section>
-    <section class="internal-content">
-      <div class="container quote-layout">
-        <div class="info-box">
-          <h2>O que ter em mãos</h2>
-          <p>Depois de continuar para o WhatsApp, estas informações ajudam a acelerar a cotação:</p>
-          <div class="field-list">
-            <div class="field-item"><strong>Cidade da obra</strong><span>Informe o município onde será realizada a concretagem.</span></div>
-            <div class="field-item"><strong>Volume aproximado</strong><span>Se souber, informe a quantidade estimada em m³.</span></div>
-            <div class="field-item"><strong>Data desejada</strong><span>Informe quando pretende realizar o serviço.</span></div>
-            <div class="field-item"><strong>Tipo de necessidade</strong><span>Concreto usinado, bombeamento ou ambos.</span></div>
-          </div>
-        </div>
-        <div class="quote-box">
-          <span class="eyebrow dark">FALE COM A EQUIPE</span>
-          <h2>Comece sua cotação agora</h2>
-          <p>Informe seus dados de contato e continue o atendimento diretamente pelo WhatsApp.</p>
-
-          <form class="lead-form" id="quote-form" novalidate>
-            <div class="form-field">
-              <label for="lead-name">Nome</label>
-              <input id="lead-name" name="name" type="text" autocomplete="name" minlength="2" required placeholder="Seu nome" />
-            </div>
-            <div class="form-field">
-              <label for="lead-phone">Telefone</label>
-              <input id="lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(11) 99999-9999" />
-            </div>
-            <p class="form-error" hidden></p>
-            <button class="btn btn-primary btn-lg" type="submit">Continuar no WhatsApp</button>
-            <p class="form-note">Ao continuar, seus dados serão usados para iniciar o atendimento e para mensuração de conversões, conforme nossa <a href="/politica-de-privacidade/">Política de Privacidade</a>.</p>
-          </form>
-
-          <a class="back-link" href="/">← Voltar para o início</a>
-        </div>
-      </div>
-    </section>
+  <main id="conteudo">
+    <section class="quote-hero"><div class="container"><div class="kicker">ORÇAMENTO</div><h1>Conte o básico da obra. <span>O restante alinhamos juntos.</span></h1><p>Comece com nome e telefone. No WhatsApp, você completa cidade, volume, data desejada e necessidade de bombeamento.</p></div></section>
+    <section class="quote-section"><div class="container quote-grid"><aside class="brief"><small>ANTES DE COMEÇAR</small><h2>Quatro informações ajudam a acelerar a cotação.</h2><p>Você não precisa ter tudo definido agora, mas estes dados ajudam o atendimento.</p><div class="brief-list"><div class="brief-row"><b>01</b><div><strong>Cidade</strong><span>Onde será realizada a concretagem.</span></div></div><div class="brief-row"><b>02</b><div><strong>Volume</strong><span>Quantidade aproximada em m³, se souber.</span></div></div><div class="brief-row"><b>03</b><div><strong>Data</strong><span>Quando pretende realizar o serviço.</span></div></div><div class="brief-row"><b>04</b><div><strong>Solução</strong><span>Concreto usinado, bombeamento ou ambos.</span></div></div></div></aside><section class="form-card"><small class="eyebrow dark">INICIAR ATENDIMENTO</small><h2>Solicite sua cotação.</h2><p>Preencha seus dados e continue diretamente no WhatsApp.</p><form class="lead-form" id="quote-form" novalidate><div class="form-field"><label for="lead-name">Nome</label><input id="lead-name" name="name" type="text" autocomplete="name" minlength="2" required placeholder="Seu nome"></div><div class="form-field"><label for="lead-phone">Telefone</label><input id="lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(11) 99999-9999"></div><p class="form-error" hidden></p><button class="submit" type="submit">Continuar no WhatsApp</button><p class="form-note">Ao continuar, seus dados serão usados para iniciar o atendimento e mensurar conversões conforme nossa <a href="/politica-de-privacidade/">Política de Privacidade</a>.</p></form><div class="trust-note"><b>●</b><span>Atendimento humano e sem compromisso.</span></div></section></div></section>
   </main>
-  <script src="/script.js?v=20260827-enhanced"></script>
+  <script src="/script.js?v=20260827-shell2"></script>
 </body>
 </html>
