@@ -268,3 +268,75 @@ document.querySelectorAll('img.product-img').forEach((img) => {
     }
   }, { once: true });
 });
+
+// ===== SHELL GLOBAL PREMIUM =====
+(function installPremiumShell(){
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  const active = path === '/produtos' ? 'produtos' : path === '/sobre' ? 'sobre' : path === '/orcamento' ? 'orcamento' : path === '/' ? 'inicio' : '';
+  const activeAttr = (name) => active === name ? ' aria-current="page"' : '';
+
+  const style = document.createElement('style');
+  style.id = 'premium-shell-style';
+  style.textContent = `
+    .premium-header{position:sticky;top:0;z-index:500;background:rgba(255,255,255,.92);border-bottom:1px solid rgba(15,24,33,.07);backdrop-filter:saturate(170%) blur(18px);-webkit-backdrop-filter:saturate(170%) blur(18px);transition:box-shadow .25s ease,background .25s ease}
+    .premium-header.is-scrolled{background:rgba(255,255,255,.97);box-shadow:0 12px 35px rgba(15,24,33,.08)}
+    .premium-topbar{background:#0d151d;color:#c5cdd4;font-size:11px}.premium-topbar .container{height:32px;display:flex;align-items:center;justify-content:space-between;gap:20px}.premium-topbar a{color:#fff;font-weight:800;letter-spacing:.02em}
+    .premium-nav{height:78px;display:flex;align-items:center;gap:34px}.premium-brand{display:inline-flex;align-items:center;gap:11px;flex-shrink:0}.premium-brand-mark{display:flex;align-items:flex-end;gap:3px;height:35px}.premium-brand-mark i{display:block;width:8px;background:#f05a28;transform:skew(-18deg);border-radius:1px}.premium-brand-mark i:nth-child(1){height:21px}.premium-brand-mark i:nth-child(2){height:28px}.premium-brand-mark i:nth-child(3){height:35px}.premium-brand-copy{display:flex;flex-direction:column;line-height:.92}.premium-brand-copy strong{font-family:Montserrat,Inter,sans-serif;font-size:17px;letter-spacing:.04em;color:#18232f}.premium-brand-copy small{font-size:9px;letter-spacing:.34em;color:#f05a28;font-weight:900;margin-top:6px}
+    .premium-menu{margin-left:auto;display:flex;align-items:center;gap:8px}.premium-menu>a{position:relative;display:inline-flex;align-items:center;min-height:42px;padding:0 13px;border-radius:999px;color:#39444e;font-size:13px;font-weight:750;transition:color .2s ease,background .2s ease}.premium-menu>a:hover{color:#f05a28;background:#fff4ef}.premium-menu>a[aria-current="page"]{color:#f05a28;background:#fff1eb}.premium-menu>a[aria-current="page"]:after{content:"";position:absolute;left:14px;right:14px;bottom:5px;height:2px;border-radius:999px;background:#f05a28}
+    .premium-budget{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:999px;background:#15202a;color:#fff;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.04em;box-shadow:0 10px 25px rgba(15,24,33,.13);transition:transform .2s ease,box-shadow .2s ease}.premium-budget:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgba(15,24,33,.18)}
+    .premium-toggle{display:none;width:46px;height:46px;border:0;border-radius:14px;background:#f4f6f7;align-items:center;justify-content:center;flex-direction:column;gap:5px;margin-left:auto}.premium-toggle i{width:21px;height:2px;background:#15202a;border-radius:999px;transition:.2s}.premium-toggle[aria-expanded="true"] i:nth-child(1){transform:translateY(7px) rotate(45deg)}.premium-toggle[aria-expanded="true"] i:nth-child(2){opacity:0}.premium-toggle[aria-expanded="true"] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    @media(max-width:980px){.premium-topbar{display:none}.premium-nav{height:70px}.premium-budget{margin-left:auto}.premium-toggle{display:flex}.premium-menu{position:fixed;inset:70px 0 0;background:rgba(255,255,255,.985);backdrop-filter:blur(18px);display:flex;flex-direction:column;align-items:stretch;gap:6px;padding:20px 18px calc(24px + env(safe-area-inset-bottom));transform:translateX(100%);opacity:0;visibility:hidden;transition:transform .25s ease,opacity .25s ease;overflow:auto}.premium-menu.open{transform:none;opacity:1;visibility:visible}.premium-menu>a{min-height:56px;border-radius:14px;font-size:17px;padding:0 16px}.premium-menu>a[aria-current="page"]:after{display:none}}
+    @media(max-width:650px){.premium-nav{height:66px}.premium-brand-copy strong{font-size:14px}.premium-brand-copy small{font-size:7px}.premium-brand-mark{height:29px}.premium-brand-mark i:nth-child(1){height:18px}.premium-brand-mark i:nth-child(2){height:23px}.premium-brand-mark i:nth-child(3){height:29px}.premium-budget{display:none}.premium-menu{inset:66px 0 0}.premium-toggle{width:44px;height:44px}.internal-hero{padding-top:72px!important}.internal-content{padding-top:46px!important}}
+  `;
+  document.head.appendChild(style);
+
+  const markup = `
+    <header class="premium-header" id="site-header">
+      <div class="premium-topbar"><div class="container"><span>Concreto usinado e bombeamento para obras residenciais, comerciais e industriais</span><a href="/orcamento/">Solicitar orçamento →</a></div></div>
+      <div class="container premium-nav">
+        <a class="premium-brand" href="/" aria-label="Concreto Brasil - início">
+          <span class="premium-brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="premium-brand-copy"><strong>CONCRETO</strong><small>BRASIL</small></span>
+        </a>
+        <nav class="premium-menu" id="premium-menu" aria-label="Navegação principal">
+          <a href="/"${activeAttr('inicio')}>Início</a>
+          <a href="/produtos/"${activeAttr('produtos')}>Produtos</a>
+          <a href="/sobre/"${activeAttr('sobre')}>Sobre</a>
+          <a href="/orcamento/"${activeAttr('orcamento')}>Orçamento</a>
+        </nav>
+        <a class="premium-budget" href="/orcamento/">Solicitar orçamento</a>
+        <button class="premium-toggle" type="button" aria-label="Abrir menu" aria-controls="premium-menu" aria-expanded="false"><i></i><i></i><i></i></button>
+      </div>
+    </header>`;
+
+  const oldHeader = document.querySelector('header.header, header.premium-header');
+  if (oldHeader) oldHeader.outerHTML = markup;
+  else document.body.insertAdjacentHTML('afterbegin', markup);
+
+  const shellHeader = document.getElementById('site-header');
+  const shellMenu = document.getElementById('premium-menu');
+  const shellToggle = document.querySelector('.premium-toggle');
+
+  const shellClose = () => {
+    shellMenu?.classList.remove('open');
+    shellToggle?.setAttribute('aria-expanded','false');
+    shellToggle?.setAttribute('aria-label','Abrir menu');
+    document.body.classList.remove('menu-open');
+  };
+  const shellOpen = () => {
+    shellMenu?.classList.add('open');
+    shellToggle?.setAttribute('aria-expanded','true');
+    shellToggle?.setAttribute('aria-label','Fechar menu');
+    document.body.classList.add('menu-open');
+  };
+
+  shellToggle?.addEventListener('click',()=>shellMenu?.classList.contains('open')?shellClose():shellOpen());
+  shellMenu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',shellClose));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')shellClose()});
+  document.addEventListener('click',e=>{
+    if(window.innerWidth>980||!shellMenu?.classList.contains('open'))return;
+    if(e.target instanceof Node&&!shellMenu.contains(e.target)&&!shellToggle?.contains(e.target))shellClose();
+  });
+  window.addEventListener('resize',()=>{if(window.innerWidth>980)shellClose()});
+  window.addEventListener('scroll',()=>shellHeader?.classList.toggle('is-scrolled',window.scrollY>16),{passive:true});
+})();
