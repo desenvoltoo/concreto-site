@@ -11,20 +11,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20260827-2" />
-  <link rel="stylesheet" href="/ux.css?v=20260827-2" />
+  <link rel="stylesheet" href="/styles.css?v=20260827-3" />
+  <link rel="stylesheet" href="/ux.css?v=20260827-3" />
   <style>
+    .nav a[aria-current="page"]{color:#f26a21!important;background:rgba(240,90,40,.08)}
     .products-title{font-family:Montserrat,sans-serif;font-size:clamp(44px,6vw,74px);line-height:1.02;letter-spacing:-.035em;margin:14px 0 20px;color:#fff;max-width:820px}
-    .products-hero-note{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 13px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#d8e0e7;font-size:13px;font-weight:700}
-    .catalog-section{padding:74px 0;background:#f5f7f9}.catalog-heading{max-width:760px;margin:0 auto 34px;text-align:center}.catalog-heading h2{font-size:clamp(34px,4vw,52px);margin:10px 0 14px}.catalog-heading p{color:#52606d;line-height:1.7;margin:0}
-    .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}.product-card{background:#fff;border:1px solid #e1e6ea;border-radius:24px;overflow:hidden;box-shadow:0 18px 45px rgba(15,24,33,.07);transition:transform .2s ease,box-shadow .2s ease}.product-card:hover{transform:translateY(-4px);box-shadow:0 22px 55px rgba(15,24,33,.11)}
-    .product-visual{min-height:300px;position:relative;background-size:cover;background-position:center}.product-visual.concrete{background-image:linear-gradient(180deg,rgba(15,24,33,.08),rgba(15,24,33,.68)),url('/assets/concrete.jpg')}.product-visual.pump{background-image:linear-gradient(180deg,rgba(15,24,33,.08),rgba(15,24,33,.68)),url('/assets/pump.jpg')}.product-chip{position:absolute;left:24px;top:24px;background:#f26a21;color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;padding:8px 12px;border-radius:999px}.product-visual-title{position:absolute;left:26px;right:26px;bottom:24px;color:#fff}.product-visual-title h2{font-size:34px;margin:0 0 7px}.product-visual-title p{margin:0;color:#e5ebf0}
-    .product-body{padding:30px}.product-body>p{color:#52606d;line-height:1.72;margin:0 0 20px}.product-facts{display:grid;gap:11px;margin:0 0 25px;padding:0;list-style:none}.product-facts li{display:flex;gap:10px;align-items:flex-start;color:#374151}.product-facts li::before{content:'✓';color:#f26a21;font-weight:900}.product-actions{display:flex;gap:10px;flex-wrap:wrap}.product-actions .btn{flex:1;min-width:180px}
-    .help-strip{padding:34px 0;background:#fff}.help-card{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;border:1px solid #e1e6ea;border-radius:22px;padding:34px 36px;background:linear-gradient(135deg,#fff 0%,#f7f9fa 100%)}.help-card h2{font-size:clamp(28px,3vw,40px);margin:8px 0 10px}.help-card p{margin:0;color:#52606d;line-height:1.65}.help-actions{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap}
-    .contact-focus{padding:76px 0;background:#0f1821;color:#fff}.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}.contact-copy h2{font-family:Montserrat,sans-serif;font-size:clamp(34px,4vw,52px);margin:10px 0 16px}.contact-copy p{color:#cbd5de;line-height:1.7;max-width:650px}.contact-steps{display:grid;gap:13px}.contact-step{padding:18px 20px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.04)}.contact-step strong{display:block;color:#fff;margin-bottom:4px}.contact-step span{color:#b8c3cc;font-size:14px}.contact-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-    .nav-products{font-weight:800!important;color:#f26a21!important}
-    @media(max-width:900px){.product-grid,.help-card,.contact-grid{grid-template-columns:1fr}.help-actions{justify-content:flex-start}}
-    @media(max-width:620px){.products-title{font-size:42px}.catalog-section{padding:52px 0}.product-body{padding:24px}.product-visual{min-height:250px}.help-card{padding:26px}.product-actions .btn{width:100%;flex:auto}}
+    .products-hero-note{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 13px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#e5ebef;font-size:13px;font-weight:700;background:rgba(15,24,33,.35)}
+    .catalog-section{padding:72px 0;background:#f4f6f8}.catalog-heading{max-width:760px;margin:0 auto 36px;text-align:center}.catalog-heading h2{font-size:clamp(34px,4vw,52px);line-height:1.08;margin:10px 0 14px}.catalog-heading p{color:#52606d;line-height:1.7;margin:0}
+    .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}.product-card{background:#fff;border:1px solid #dde3e8;border-radius:24px;overflow:hidden;box-shadow:0 18px 45px rgba(15,24,33,.08);transition:transform .2s ease,box-shadow .2s ease}.product-card:hover{transform:translateY(-4px);box-shadow:0 22px 55px rgba(15,24,33,.12)}
+    .product-visual{min-height:300px;position:relative;background-size:cover;background-position:center}.product-visual.concrete{background-image:linear-gradient(180deg,rgba(15,24,33,.08),rgba(15,24,33,.78)),url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1100&q=85')}.product-visual.pump{background-image:linear-gradient(180deg,rgba(15,24,33,.08),rgba(15,24,33,.78)),url('https://images.unsplash.com/photo-1531835551805-16d864c8d311?auto=format&fit=crop&w=1100&q=85')}.product-chip{position:absolute;left:24px;top:24px;background:#f26a21;color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;padding:8px 12px;border-radius:999px}.product-visual-title{position:absolute;left:26px;right:26px;bottom:24px;color:#fff}.product-visual-title h2{font-size:34px;line-height:1.08;margin:0 0 7px}.product-visual-title p{margin:0;color:#eef2f5;line-height:1.5}
+    .product-body{padding:30px}.product-body>p{color:#52606d;line-height:1.72;margin:0 0 20px}.product-facts{display:grid;gap:11px;margin:0 0 25px;padding:0;list-style:none}.product-facts li{display:flex;gap:10px;align-items:flex-start;color:#374151;line-height:1.5}.product-facts li::before{content:'✓';color:#f26a21;font-weight:900}.product-actions{display:flex;gap:10px;flex-wrap:wrap}.product-actions .btn{flex:1;min-width:180px}
+    .help-strip{padding:36px 0;background:#fff}.help-card{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;border:1px solid #dde3e8;border-radius:22px;padding:34px 36px;background:linear-gradient(135deg,#fff 0%,#f7f9fa 100%);box-shadow:0 12px 32px rgba(15,24,33,.05)}.help-card h2{font-size:clamp(28px,3vw,40px);line-height:1.12;margin:8px 0 10px}.help-card p{margin:0;color:#52606d;line-height:1.65}.help-actions{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+    .contact-focus{padding:72px 0;background:#0f1821;color:#fff}.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}.contact-copy h2{font-family:Montserrat,sans-serif;font-size:clamp(34px,4vw,52px);line-height:1.08;margin:10px 0 16px}.contact-copy p{color:#d5dde4;line-height:1.7;max-width:650px}.contact-steps{display:grid;gap:13px}.contact-step{padding:18px 20px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,.05)}.contact-step strong{display:block;color:#fff;margin-bottom:4px}.contact-step span{color:#c1cbd3;font-size:14px}.contact-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    @media(max-width:900px){.product-grid,.help-card,.contact-grid{grid-template-columns:1fr}.help-actions{justify-content:flex-start}.product-grid{gap:20px}}
+    @media(max-width:650px){
+      .nav a[aria-current="page"]{background:#fff1eb;border:1px solid #ffd7c8}
+      .hero-grid{padding:28px 0 24px}.hero-bg{background-position:58% center}.products-title{font-size:clamp(34px,10vw,40px);line-height:1.06;letter-spacing:-.025em;margin:8px 0 12px}.hero-content>p{font-size:15.5px;line-height:1.55;color:#e6ebef;margin:12px 0 18px}.products-hero-note{font-size:12px;padding:8px 11px;margin-top:12px}.quote-card{display:none}
+      .catalog-section{padding:38px 0}.catalog-heading{text-align:left;margin-bottom:20px}.catalog-heading h2{font-size:30px;margin:6px 0 9px}.catalog-heading p{font-size:15px;line-height:1.55}.product-grid{grid-template-columns:1fr;gap:16px}
+      .product-card{border-radius:18px}.product-visual{min-height:215px}.product-chip{left:16px;top:16px;font-size:10px;padding:7px 10px}.product-visual-title{left:18px;right:18px;bottom:16px}.product-visual-title h2{font-size:25px}.product-visual-title p{font-size:13px}.product-body{padding:20px}.product-body>p{font-size:15px;line-height:1.58;margin-bottom:16px}.product-facts{gap:9px;margin-bottom:18px}.product-facts li{font-size:14px;line-height:1.45}.product-actions{display:grid;grid-template-columns:1fr;gap:9px}.product-actions .btn{width:100%;min-width:0}
+      .help-strip{padding:22px 0}.help-card{padding:22px 18px;gap:18px;border-radius:18px}.help-card h2{font-size:27px}.help-card p{font-size:15px;line-height:1.55}.help-actions .btn{width:100%}
+      .contact-focus{padding:44px 0}.contact-grid{gap:24px}.contact-copy h2{font-size:30px}.contact-copy p{font-size:15px;line-height:1.55}.contact-buttons{display:grid;grid-template-columns:1fr;gap:9px;margin-top:18px}.contact-buttons .btn{width:100%}.contact-steps{gap:9px}.contact-step{padding:15px 16px;border-radius:13px}.contact-step strong{font-size:14px}.contact-step span{font-size:13px;line-height:1.45}
+    }
   </style>
 </head>
 <body>
@@ -36,7 +43,7 @@
       <a class="brand" href="/" aria-label="Concreto Brasil - início"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-text"><strong>CONCRETO</strong><small>BRASIL</small></span></a>
       <nav class="nav" id="main-nav" aria-label="Navegação principal">
         <a href="/">Início</a>
-        <a class="nav-products" href="#catalogo">Produtos</a>
+        <a href="/produtos/" aria-current="page">Produtos</a>
         <a href="#atendimento">Atendimento</a>
         <a class="mobile-nav-cta js-whatsapp" href="#">Falar com atendimento</a>
       </nav>
@@ -46,92 +53,25 @@
   </header>
 
   <main id="conteudo">
-    <section class="hero">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="eyebrow">PRODUTOS</div>
-          <h1 class="products-title">Escolha a solução para sua concretagem.</h1>
-          <p>Conheça nossos produtos, veja a diferença entre concreto usinado e bombeamento e fale diretamente com o atendimento para verificar disponibilidade.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary btn-lg" href="#catalogo">Ver produtos</a>
-            <a class="btn btn-ghost btn-lg js-whatsapp" data-message="Olá! Preciso de ajuda para escolher o produto para minha obra." href="#">Preciso de ajuda</a>
-          </div>
-          <div class="products-hero-note">● Atendimento humano para orientar sua escolha</div>
-        </div>
+    <section class="hero"><div class="hero-bg" aria-hidden="true"></div><div class="container hero-grid">
+      <div class="hero-content"><div class="eyebrow">PRODUTOS</div><h1 class="products-title">Escolha a solução para sua concretagem.</h1><p>Conheça nossos produtos, entenda a diferença entre concreto usinado e bombeamento e fale diretamente com o atendimento para verificar disponibilidade.</p><div class="hero-actions"><a class="btn btn-primary btn-lg" href="#catalogo">Ver produtos</a><a class="btn btn-ghost btn-lg js-whatsapp" data-message="Olá! Preciso de ajuda para escolher o produto para minha obra." href="#">Preciso de ajuda</a></div><div class="products-hero-note">● Atendimento humano para orientar sua escolha</div></div>
+      <aside class="quote-card" aria-label="Escolha rápida"><div class="quote-icon" aria-hidden="true">▰</div><span class="quote-kicker">ESCOLHA RÁPIDA</span><h2>O que você precisa?</h2><p>Selecione uma opção abaixo:</p><ul class="quote-list"><li>Concreto usinado para a concretagem</li><li>Bombeamento para levar o concreto ao ponto de aplicação</li><li>Ajuda do atendimento para decidir</li></ul><a class="btn btn-primary btn-block" href="#catalogo">Comparar produtos</a></aside>
+    </div></section>
 
-        <aside class="quote-card" aria-label="Escolha rápida">
-          <div class="quote-icon" aria-hidden="true">▰</div>
-          <span class="quote-kicker">ESCOLHA RÁPIDA</span>
-          <h2>O que você precisa?</h2>
-          <p>Selecione uma opção abaixo:</p>
-          <ul class="quote-list"><li>Concreto usinado para a concretagem</li><li>Bombeamento para levar o concreto ao ponto de aplicação</li><li>Ajuda do atendimento para decidir</li></ul>
-          <a class="btn btn-primary btn-block" href="#catalogo">Comparar produtos</a>
-        </aside>
-      </div>
-    </section>
+    <section class="catalog-section" id="catalogo"><div class="container"><div class="catalog-heading"><span class="eyebrow dark">CATÁLOGO</span><h2>Nossos produtos e serviços.</h2><p>Informações diretas para você entender a solução e seguir para o atendimento.</p></div><div class="product-grid">
+      <article class="product-card" id="concreto-usinado"><div class="product-visual concrete"><span class="product-chip">PRODUTO</span><div class="product-visual-title"><h2>Concreto usinado</h2><p>Concreto preparado em central para sua obra.</p></div></div><div class="product-body"><p>Indicado para concretagens residenciais, comerciais e industriais. O atendimento considera cidade, volume, data desejada e as necessidades informadas para a obra.</p><ul class="product-facts"><li>Fornecimento conforme disponibilidade regional</li><li>Programação alinhada antes da entrega</li><li>Pode ser combinado com bombeamento</li></ul><div class="product-actions"><a class="btn btn-primary js-whatsapp" data-message="Olá! Quero atendimento para concreto usinado. Minha cidade é: " href="#">Pedir atendimento</a><a class="btn btn-dark" href="/concreto-usinado/">Ver detalhes</a></div></div></article>
+      <article class="product-card" id="bombeamento"><div class="product-visual pump"><span class="product-chip">SERVIÇO</span><div class="product-visual-title"><h2>Bombeamento de concreto</h2><p>Apoio para levar o concreto ao ponto de aplicação.</p></div></div><div class="product-body"><p>Serviço complementar utilizado quando a operação precisa transportar o concreto entre o caminhão e o ponto de lançamento. A viabilidade depende das condições da obra.</p><ul class="product-facts"><li>Pode ser solicitado junto com o concreto</li><li>Atendimento sujeito a acesso e disponibilidade</li><li>Equipe valida as condições antes da programação</li></ul><div class="product-actions"><a class="btn btn-primary js-whatsapp" data-message="Olá! Quero atendimento para bombeamento de concreto. Minha cidade é: " href="#">Pedir atendimento</a><a class="btn btn-dark" href="/bombeamento-de-concreto/">Ver detalhes</a></div></div></article>
+    </div></div></section>
 
-    <section class="catalog-section" id="catalogo">
-      <div class="container">
-        <div class="catalog-heading"><span class="eyebrow dark">CATÁLOGO</span><h2>Nossos produtos e serviços.</h2><p>Informações diretas para você entender a solução e seguir para o atendimento.</p></div>
+    <section class="help-strip"><div class="container"><div class="help-card"><div><span class="eyebrow dark">NÃO SABE QUAL ESCOLHER?</span><h2>A equipe pode orientar o atendimento.</h2><p>Informe cidade, volume aproximado, data desejada e como é o acesso da obra. Com esses dados conseguimos direcionar melhor sua solicitação.</p></div><div class="help-actions"><a class="btn btn-primary btn-lg js-whatsapp" data-message="Olá! Preciso de ajuda para escolher entre concreto usinado e bombeamento. Minha cidade é: " href="#">Falar com atendimento</a></div></div></div></section>
 
-        <div class="product-grid">
-          <article class="product-card" id="concreto-usinado">
-            <div class="product-visual concrete">
-              <span class="product-chip">PRODUTO</span>
-              <div class="product-visual-title"><h2>Concreto usinado</h2><p>Concreto preparado em central para sua obra.</p></div>
-            </div>
-            <div class="product-body">
-              <p>Indicado para concretagens residenciais, comerciais e industriais. O atendimento considera cidade, volume, data desejada e as necessidades informadas para a obra.</p>
-              <ul class="product-facts"><li>Fornecimento conforme disponibilidade regional</li><li>Programação alinhada antes da entrega</li><li>Pode ser combinado com bombeamento</li></ul>
-              <div class="product-actions"><a class="btn btn-primary js-whatsapp" data-message="Olá! Quero atendimento para concreto usinado. Minha cidade é: " href="#">Pedir atendimento</a><a class="btn btn-dark" href="/concreto-usinado/">Ver detalhes</a></div>
-            </div>
-          </article>
-
-          <article class="product-card" id="bombeamento">
-            <div class="product-visual pump">
-              <span class="product-chip">SERVIÇO</span>
-              <div class="product-visual-title"><h2>Bombeamento de concreto</h2><p>Apoio para levar o concreto ao ponto de aplicação.</p></div>
-            </div>
-            <div class="product-body">
-              <p>Serviço complementar utilizado quando a operação precisa transportar o concreto entre o caminhão e o ponto de lançamento. A viabilidade depende das condições da obra.</p>
-              <ul class="product-facts"><li>Pode ser solicitado junto com o concreto</li><li>Atendimento sujeito a acesso e disponibilidade</li><li>Equipe valida as condições antes da programação</li></ul>
-              <div class="product-actions"><a class="btn btn-primary js-whatsapp" data-message="Olá! Quero atendimento para bombeamento de concreto. Minha cidade é: " href="#">Pedir atendimento</a><a class="btn btn-dark" href="/bombeamento-de-concreto/">Ver detalhes</a></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="help-strip">
-      <div class="container">
-        <div class="help-card">
-          <div><span class="eyebrow dark">NÃO SABE QUAL ESCOLHER?</span><h2>A equipe pode orientar o atendimento.</h2><p>Informe cidade, volume aproximado, data desejada e como é o acesso da obra. Com esses dados conseguimos direcionar melhor sua solicitação.</p></div>
-          <div class="help-actions"><a class="btn btn-primary btn-lg js-whatsapp" data-message="Olá! Preciso de ajuda para escolher entre concreto usinado e bombeamento. Minha cidade é: " href="#">Falar com atendimento</a></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-focus" id="atendimento">
-      <div class="container contact-grid">
-        <div class="contact-copy"><span class="eyebrow">ATENDIMENTO</span><h2>Do produto para o atendimento em poucos passos.</h2><p>Escolheu a solução? Envie as informações básicas da obra. A equipe verifica disponibilidade e segue com o atendimento comercial.</p><div class="contact-buttons"><a class="btn btn-primary btn-lg js-whatsapp" data-message="Olá! Quero solicitar atendimento para minha obra. Minha cidade é: " href="#">Abrir WhatsApp</a><a class="btn btn-light btn-lg" href="/orcamento/">Preencher orçamento</a></div></div>
-        <div class="contact-steps"><div class="contact-step"><strong>01 — Cidade</strong><span>Informe onde será a concretagem.</span></div><div class="contact-step"><strong>02 — Volume</strong><span>Envie o volume aproximado em m³, se souber.</span></div><div class="contact-step"><strong>03 — Data</strong><span>Informe quando pretende realizar a concretagem.</span></div><div class="contact-step"><strong>04 — Produto</strong><span>Diga se precisa de concreto, bombeamento ou dos dois.</span></div></div>
-      </div>
-    </section>
+    <section class="contact-focus" id="atendimento"><div class="container contact-grid"><div class="contact-copy"><span class="eyebrow">ATENDIMENTO</span><h2>Do produto para o atendimento em poucos passos.</h2><p>Escolheu a solução? Envie as informações básicas da obra. A equipe verifica disponibilidade e segue com o atendimento comercial.</p><div class="contact-buttons"><a class="btn btn-primary btn-lg js-whatsapp" data-message="Olá! Quero solicitar atendimento para minha obra. Minha cidade é: " href="#">Abrir WhatsApp</a><a class="btn btn-light btn-lg" href="/orcamento/">Preencher orçamento</a></div></div><div class="contact-steps"><div class="contact-step"><strong>01 — Cidade</strong><span>Informe onde será a concretagem.</span></div><div class="contact-step"><strong>02 — Volume</strong><span>Envie o volume aproximado em m³, se souber.</span></div><div class="contact-step"><strong>03 — Data</strong><span>Informe quando pretende realizar a concretagem.</span></div><div class="contact-step"><strong>04 — Produto</strong><span>Diga se precisa de concreto, bombeamento ou dos dois.</span></div></div></div></section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div><a class="brand brand-footer" href="/"><span class="brand-mark"><span></span><span></span><span></span></span><span class="brand-text"><strong>CONCRETO</strong><small>BRASIL</small></span></a><p>Concreto usinado e bombeamento com conexão direta ao atendimento.</p></div>
-      <div><strong>Produtos</strong><a href="#concreto-usinado">Concreto usinado</a><a href="#bombeamento">Bombeamento</a></div>
-      <div><strong>Atendimento</strong><a class="js-whatsapp" href="#">Falar no WhatsApp</a><a href="/orcamento/">Solicitar orçamento</a></div>
-    </div>
-    <div class="container footer-bottom"><span>© <span id="year"></span> Concreto Brasil.</span><span>Produtos e atendimento.</span></div>
-  </footer>
+  <footer class="footer"><div class="container footer-grid"><div><a class="brand brand-footer" href="/"><span class="brand-mark"><span></span><span></span><span></span></span><span class="brand-text"><strong>CONCRETO</strong><small>BRASIL</small></span></a><p>Concreto usinado e bombeamento com conexão direta ao atendimento.</p></div><div><strong>Produtos</strong><a href="#concreto-usinado">Concreto usinado</a><a href="#bombeamento">Bombeamento</a></div><div><strong>Atendimento</strong><a class="js-whatsapp" href="#">Falar no WhatsApp</a><a href="/orcamento/">Solicitar orçamento</a></div></div><div class="container footer-bottom"><span>© <span id="year"></span> Concreto Brasil.</span><span>Produtos e atendimento.</span></div></footer>
 
   <a class="whatsapp-float js-whatsapp" href="#" aria-label="Falar com atendimento pelo WhatsApp"><span aria-hidden="true" style="font-size:24px">●</span><span><strong>Atendimento</strong><small>Fale pelo WhatsApp</small></span></a>
   <div class="mobile-cta"><a class="js-whatsapp" href="#" aria-label="Falar com atendimento"><span aria-hidden="true" style="font-size:20px">●</span><span>Falar com atendimento</span></a></div>
-
-  <script src="/script.js?v=20260827-products2"></script>
+  <script src="/script.js?v=20260827-products3"></script>
 </body>
 </html>
