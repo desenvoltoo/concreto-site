@@ -8,11 +8,13 @@ const GOOGLE_ADS_SEND_TO = 'AW-18387900627/GyYTCIGm3OIcENOxhMBE';
 
 function ensureGoogleTag() {
   window.dataLayer = window.dataLayer || [];
+
   if (typeof window.gtag !== 'function') {
     window.gtag = function gtag(){ window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
     window.gtag('config', GOOGLE_ADS_ID);
   }
+
   if (!document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}"]`)) {
     const script = document.createElement('script');
     script.async = true;
@@ -20,6 +22,7 @@ function ensureGoogleTag() {
     document.head.appendChild(script);
   }
 }
+
 ensureGoogleTag();
 
 function whatsappUrl(message = DEFAULT_MESSAGE) {
@@ -36,15 +39,21 @@ function normalizeBrazilPhone(value) {
 
 function splitName(fullName) {
   const parts = String(fullName || '').trim().replace(/\s+/g, ' ').split(' ').filter(Boolean);
-  return { firstName: parts[0] || '', lastName: parts.length > 1 ? parts.slice(1).join(' ') : '' };
+  return {
+    firstName: parts[0] || '',
+    lastName: parts.length > 1 ? parts.slice(1).join(' ') : ''
+  };
 }
 
 function setEnhancedConversionUserData({ name, phone }) {
   if (typeof window.gtag !== 'function') return false;
+
   const phoneNumber = normalizeBrazilPhone(phone);
   if (!phoneNumber) return false;
+
   const { firstName, lastName } = splitName(name);
   const userData = { phone_number: phoneNumber };
+
   if (firstName || lastName) {
     userData.address = {
       ...(firstName ? { first_name: firstName } : {}),
@@ -52,12 +61,14 @@ function setEnhancedConversionUserData({ name, phone }) {
       country: 'BR'
     };
   }
+
   window.gtag('set', 'user_data', userData);
   return true;
 }
 
 function reportGoogleAdsConversion(url, userData = null) {
   if (userData) setEnhancedConversionUserData(userData);
+
   if (GOOGLE_ADS_SEND_TO && typeof window.gtag === 'function') {
     let navigated = false;
     const go = () => {
@@ -65,15 +76,18 @@ function reportGoogleAdsConversion(url, userData = null) {
       navigated = true;
       window.location.href = url;
     };
+
     window.gtag('event', 'conversion', {
       send_to: GOOGLE_ADS_SEND_TO,
       value: 1.0,
       currency: 'BRL',
       event_callback: go
     });
+
     window.setTimeout(go, 1200);
     return true;
   }
+
   window.location.href = url;
   return true;
 }
@@ -100,9 +114,11 @@ if (quoteForm) {
 
   quoteForm.addEventListener('submit', (event) => {
     event.preventDefault();
+
     const name = nameInput?.value.trim() || '';
     const phone = phoneInput?.value.trim() || '';
     const normalizedPhone = normalizeBrazilPhone(phone);
+
     if (name.length < 2 || !normalizedPhone) {
       if (errorBox) {
         errorBox.textContent = 'Informe seu nome e um telefone válido com DDD.';
@@ -110,7 +126,9 @@ if (quoteForm) {
       }
       return;
     }
+
     if (errorBox) errorBox.hidden = true;
+
     const message = `Olá! Quero solicitar um orçamento de concreto.\nNome: ${name}\nTelefone: ${normalizedPhone}\nMinha cidade é: `;
     reportGoogleAdsConversion(whatsappUrl(message), { name, phone: normalizedPhone });
   });
@@ -123,13 +141,14 @@ document.querySelectorAll('.js-whatsapp').forEach((link) => {
   link.href = url;
   link.removeAttribute('target');
   link.removeAttribute('rel');
+
   link.addEventListener('click', (event) => {
     event.preventDefault();
     reportGoogleAdsConversion(url);
   });
 });
 
-// ===== RODAPÉ E LINKS LEGAIS =====
+// ===== LINKS INSTITUCIONAIS =====
 const footerBottom = document.querySelector('.footer-bottom');
 if (footerBottom && !footerBottom.querySelector('.legal-links')) {
   const legal = document.createElement('span');
@@ -137,6 +156,7 @@ if (footerBottom && !footerBottom.querySelector('.legal-links')) {
   legal.innerHTML = '<a href="/produtos/">Produtos</a> · <a href="/sobre/">Sobre nós</a> · <a href="/politica-de-privacidade/">Privacidade</a> · <a href="/termos/">Termos de uso</a>';
   footerBottom.appendChild(legal);
 }
+
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
@@ -144,73 +164,107 @@ if (year) year.textContent = new Date().getFullYear();
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 
-function closeMenu() {
+function closeMenu({ restoreFocus = false } = {}) {
   nav?.classList.remove('open');
   toggle?.setAttribute('aria-expanded', 'false');
   toggle?.setAttribute('aria-label', 'Abrir menu');
   document.body.classList.remove('menu-open');
+  if (restoreFocus) toggle?.focus();
 }
+
 function openMenu() {
   nav?.classList.add('open');
   toggle?.setAttribute('aria-expanded', 'true');
   toggle?.setAttribute('aria-label', 'Fechar menu');
   document.body.classList.add('menu-open');
-  nav?.querySelector('a')?.focus({ preventScroll: true });
+  window.setTimeout(() => nav?.querySelector('a')?.focus(), 80);
 }
-toggle?.addEventListener('click', () => nav?.classList.contains('open') ? closeMenu() : openMenu());
-nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
-window.addEventListener('resize', () => { if (window.innerWidth > 980) closeMenu(); }, { passive: true });
+
+toggle?.addEventListener('click', () => {
+  nav?.classList.contains('open') ? closeMenu() : openMenu();
+});
+
+nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && nav?.classList.contains('open')) closeMenu({ restoreFocus: true });
+});
+
 document.addEventListener('click', (event) => {
   if (window.innerWidth > 980 || !nav?.classList.contains('open')) return;
   const target = event.target;
   if (target instanceof Node && !nav.contains(target) && !toggle?.contains(target)) closeMenu();
 });
 
-// ===== MELHORIAS DE INTERAÇÃO =====
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 980) closeMenu();
+});
+
+// ===== ROLAGEM, REVEAL E PROGRESSO =====
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const header = document.querySelector('.header');
-const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 12);
-updateHeader();
-window.addEventListener('scroll', updateHeader, { passive: true });
+const progress = document.getElementById('scroll-progress');
+let scrollTicking = false;
 
-// Rolagem interna com compensação do cabeçalho sticky.
-document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach((link) => {
-  link.addEventListener('click', (event) => {
-    const selector = link.getAttribute('href');
-    const target = selector ? document.querySelector(selector) : null;
-    if (!target) return;
-    event.preventDefault();
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const offset = (header?.offsetHeight || 0) + 12;
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
-    history.replaceState(null, '', selector);
-  });
-});
+function updateScrollUI() {
+  const y = window.scrollY || 0;
+  header?.classList.toggle('is-scrolled', y > 18);
 
-// Fallback elegante para imagens externas que não carregarem.
-document.querySelectorAll('.product-media img').forEach((img) => {
-  const media = img.closest('.product-media');
-  const markLoaded = () => media?.classList.add('is-loaded');
-  const markError = () => media?.classList.add('is-error');
-  if (img.complete) {
-    img.naturalWidth ? markLoaded() : markError();
-  } else {
-    img.addEventListener('load', markLoaded, { once: true });
-    img.addEventListener('error', markError, { once: true });
+  if (progress) {
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    progress.style.transform = `scaleX(${Math.min(1, y / max)})`;
   }
-});
 
-// Revelação leve dos cards sem prejudicar acessibilidade ou desempenho.
-const revealItems = document.querySelectorAll('.product-card,.assist-card,.contact-step');
-if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  revealItems.forEach((el) => el.classList.add('reveal-item'));
+  scrollTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) {
+    scrollTicking = true;
+    window.requestAnimationFrame(updateScrollUI);
+  }
+}, { passive: true });
+
+updateScrollUI();
+
+const revealItems = document.querySelectorAll('.reveal');
+if (reduceMotion || !('IntersectionObserver' in window)) {
+  revealItems.forEach((item) => item.classList.add('is-visible'));
+} else {
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add('is-visible');
       obs.unobserve(entry.target);
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px' });
-  revealItems.forEach((el) => observer.observe(el));
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  revealItems.forEach((item) => observer.observe(item));
 }
+
+// ===== ÂNCORAS COM HEADER FIXO =====
+document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const id = link.getAttribute('href');
+    const target = id ? document.querySelector(id) : null;
+    if (!target) return;
+
+    event.preventDefault();
+    const headerHeight = header?.offsetHeight || 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 14;
+    window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+    history.replaceState(null, '', id);
+  });
+});
+
+// ===== FALLBACK DE IMAGENS =====
+document.querySelectorAll('img.product-img').forEach((img) => {
+  img.addEventListener('error', () => {
+    img.style.display = 'none';
+    const parent = img.parentElement;
+    if (parent) {
+      parent.style.background = 'linear-gradient(135deg,#263644,#111a23)';
+      parent.classList.add('image-fallback');
+    }
+  }, { once: true });
+});
