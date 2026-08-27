@@ -1,3 +1,4 @@
+@import url('/visuals.css?v=20260827-1');
 /* Concreto Brasil — shell global único */
 :root{--cb-orange:#f05a28;--cb-orange-dark:#d94a19;--cb-ink:#111a23;--cb-navy:#0d151d;--cb-muted:#68737d;--cb-line:#e6eaed;--cb-white:#fff;--cb-container:1180px}
 .cb-shell{position:sticky;top:0;z-index:900;isolation:isolate;background:rgba(255,255,255,.955);border-bottom:1px solid rgba(15,24,33,.065);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);transition:background .22s ease,box-shadow .22s ease,border-color .22s ease}.cb-shell:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(240,90,40,.18),transparent);pointer-events:none}.cb-shell.is-scrolled{background:rgba(255,255,255,.99);border-bottom-color:rgba(15,24,33,.09);box-shadow:0 14px 40px rgba(15,24,33,.085)}
