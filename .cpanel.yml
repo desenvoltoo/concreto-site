@@ -1,32 +1,36 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home2/ericod74/public_html/concretobrasils.online/
-    - /bin/mkdir -p $DEPLOYPATH
-    # DEPLOY LIMPO 2026-08-27 DIRECT1: remove toda a publicação anterior e preserva apenas .well-known/ para AutoSSL/ACME.
-    - /usr/bin/find $DEPLOYPATH -mindepth 1 -maxdepth 1 ! -name '.well-known' -exec /bin/rm -rf {} \;
-    - /bin/echo 'Concreto Brasil: publicação anterior removida; iniciando deploy limpo DIRECT1'
-    - /bin/mkdir -p $DEPLOYPATH/produtos
-    - /bin/mkdir -p $DEPLOYPATH/sobre
-    - /bin/mkdir -p $DEPLOYPATH/politica-de-privacidade
-    - /bin/mkdir -p $DEPLOYPATH/termos
-    - /bin/mkdir -p $DEPLOYPATH/orcamento
-    - /bin/mkdir -p $DEPLOYPATH/concreto-usinado
-    - /bin/mkdir -p $DEPLOYPATH/bombeamento-de-concreto
-    - /bin/cp index.html $DEPLOYPATH/index.html
-    - /bin/cp styles.css $DEPLOYPATH/styles.css
-    - /bin/cp ux.css $DEPLOYPATH/ux.css
-    - /bin/cp shell.css $DEPLOYPATH/shell.css
-    - /bin/cp visuals.css $DEPLOYPATH/visuals.css
-    - /bin/cp script.js $DEPLOYPATH/script.js
-    - /bin/cp favicon-32.png $DEPLOYPATH/favicon-32.png
-    - /bin/cp robots.txt $DEPLOYPATH/robots.txt
-    - /bin/cp sitemap.xml $DEPLOYPATH/sitemap.xml
-    - /bin/cp .htaccess $DEPLOYPATH/.htaccess
-    - /bin/cp produtos/index.html $DEPLOYPATH/produtos/index.html
-    - /bin/cp sobre/index.html $DEPLOYPATH/sobre/index.html
-    - /bin/cp politica-de-privacidade/index.html $DEPLOYPATH/politica-de-privacidade/index.html
-    - /bin/cp termos/index.html $DEPLOYPATH/termos/index.html
-    - /bin/cp orcamento/index.html $DEPLOYPATH/orcamento/index.html
-    - /bin/cp concreto-usinado/index.html $DEPLOYPATH/concreto-usinado/index.html
-    - /bin/cp bombeamento-de-concreto/index.html $DEPLOYPATH/bombeamento-de-concreto/index.html
+    - export DEPLOYPATH=/home2/ericod74/public_html/concretobrasils.online
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - /bin/chmod 755 "$DEPLOYPATH"
+    - /bin/rm -rf "$DEPLOYPATH/produtos" "$DEPLOYPATH/sobre" "$DEPLOYPATH/politica-de-privacidade" "$DEPLOYPATH/termos" "$DEPLOYPATH/orcamento" "$DEPLOYPATH/concreto-usinado" "$DEPLOYPATH/bombeamento-de-concreto"
+    - /bin/rm -f "$DEPLOYPATH/index.html" "$DEPLOYPATH/styles.css" "$DEPLOYPATH/ux.css" "$DEPLOYPATH/shell.css" "$DEPLOYPATH/visuals.css" "$DEPLOYPATH/script.js" "$DEPLOYPATH/favicon-32.png" "$DEPLOYPATH/robots.txt" "$DEPLOYPATH/sitemap.xml" "$DEPLOYPATH/.htaccess"
+    - /bin/mkdir -p "$DEPLOYPATH/produtos" "$DEPLOYPATH/sobre" "$DEPLOYPATH/politica-de-privacidade" "$DEPLOYPATH/termos" "$DEPLOYPATH/orcamento" "$DEPLOYPATH/concreto-usinado" "$DEPLOYPATH/bombeamento-de-concreto"
+    - /bin/chmod 755 "$DEPLOYPATH/produtos" "$DEPLOYPATH/sobre" "$DEPLOYPATH/politica-de-privacidade" "$DEPLOYPATH/termos" "$DEPLOYPATH/orcamento" "$DEPLOYPATH/concreto-usinado" "$DEPLOYPATH/bombeamento-de-concreto"
+    - /bin/cp -f index.html "$DEPLOYPATH/index.html"
+    - /bin/cp -f styles.css "$DEPLOYPATH/styles.css"
+    - /bin/cp -f ux.css "$DEPLOYPATH/ux.css"
+    - /bin/cp -f shell.css "$DEPLOYPATH/shell.css"
+    - /bin/cp -f visuals.css "$DEPLOYPATH/visuals.css"
+    - /bin/cp -f script.js "$DEPLOYPATH/script.js"
+    - /bin/cp -f favicon-32.png "$DEPLOYPATH/favicon-32.png"
+    - /bin/cp -f robots.txt "$DEPLOYPATH/robots.txt"
+    - /bin/cp -f sitemap.xml "$DEPLOYPATH/sitemap.xml"
+    - /bin/cp -f .htaccess "$DEPLOYPATH/.htaccess"
+    - /bin/cp -f produtos/index.html "$DEPLOYPATH/produtos/index.html"
+    - /bin/cp -f sobre/index.html "$DEPLOYPATH/sobre/index.html"
+    - /bin/cp -f politica-de-privacidade/index.html "$DEPLOYPATH/politica-de-privacidade/index.html"
+    - /bin/cp -f termos/index.html "$DEPLOYPATH/termos/index.html"
+    - /bin/cp -f orcamento/index.html "$DEPLOYPATH/orcamento/index.html"
+    - /bin/cp -f concreto-usinado/index.html "$DEPLOYPATH/concreto-usinado/index.html"
+    - /bin/cp -f bombeamento-de-concreto/index.html "$DEPLOYPATH/bombeamento-de-concreto/index.html"
+    - /bin/chmod 644 "$DEPLOYPATH/index.html" "$DEPLOYPATH/styles.css" "$DEPLOYPATH/ux.css" "$DEPLOYPATH/shell.css" "$DEPLOYPATH/visuals.css" "$DEPLOYPATH/script.js" "$DEPLOYPATH/favicon-32.png" "$DEPLOYPATH/robots.txt" "$DEPLOYPATH/sitemap.xml" "$DEPLOYPATH/.htaccess"
+    - /bin/chmod 644 "$DEPLOYPATH/produtos/index.html" "$DEPLOYPATH/sobre/index.html" "$DEPLOYPATH/politica-de-privacidade/index.html" "$DEPLOYPATH/termos/index.html" "$DEPLOYPATH/orcamento/index.html" "$DEPLOYPATH/concreto-usinado/index.html" "$DEPLOYPATH/bombeamento-de-concreto/index.html"
+    - /usr/bin/test -s "$DEPLOYPATH/index.html"
+    - /usr/bin/test -s "$DEPLOYPATH/produtos/index.html"
+    - /usr/bin/test -s "$DEPLOYPATH/sobre/index.html"
+    - /usr/bin/test -s "$DEPLOYPATH/orcamento/index.html"
+    - /usr/bin/test -s "$DEPLOYPATH/concreto-usinado/index.html"
+    - /usr/bin/test -s "$DEPLOYPATH/bombeamento-de-concreto/index.html"
+    - /bin/echo 'Concreto Brasil: deploy validado com diretórios 755 e arquivos 644'
