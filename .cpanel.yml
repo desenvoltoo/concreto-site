@@ -3,11 +3,8 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home2/ericod74/public_html/concretobrasils.online
     - /bin/mkdir -p "$DEPLOYPATH"
-    - /usr/bin/find "$DEPLOYPATH" -mindepth 1 -maxdepth 1 ! -name '.well-known' -exec /bin/rm -rf {} +
-    - /bin/cp -a index.html styles.css ux.css shell.css visuals.css script.js favicon-32.png robots.txt sitemap.xml .htaccess produtos sobre politica-de-privacidade termos orcamento concreto-usinado bombeamento-de-concreto "$DEPLOYPATH/"
-    - /usr/bin/find "$DEPLOYPATH" -type d -exec /bin/chmod 755 {} +
-    - /usr/bin/find "$DEPLOYPATH" -type f -exec /bin/chmod 644 {} +
-    - /usr/bin/test -s "$DEPLOYPATH/index.html"
-    - /usr/bin/test -s "$DEPLOYPATH/script.js"
-    - /usr/bin/test -s "$DEPLOYPATH/.htaccess"
-    - /bin/echo 'Concreto Brasil: deploy enxuto concluido'
+    - /bin/rm -rf "$DEPLOYPATH/index.html" "$DEPLOYPATH/styles.css" "$DEPLOYPATH/ux.css" "$DEPLOYPATH/shell.css" "$DEPLOYPATH/visuals.css" "$DEPLOYPATH/script.js" "$DEPLOYPATH/favicon-32.png" "$DEPLOYPATH/robots.txt" "$DEPLOYPATH/sitemap.xml" "$DEPLOYPATH/.htaccess" "$DEPLOYPATH/produtos" "$DEPLOYPATH/sobre" "$DEPLOYPATH/politica-de-privacidade" "$DEPLOYPATH/termos" "$DEPLOYPATH/orcamento" "$DEPLOYPATH/concreto-usinado" "$DEPLOYPATH/bombeamento-de-concreto"
+    - /bin/cp -f index.html styles.css ux.css shell.css visuals.css script.js favicon-32.png robots.txt sitemap.xml .htaccess "$DEPLOYPATH/"
+    - /bin/cp -R produtos sobre politica-de-privacidade termos orcamento concreto-usinado bombeamento-de-concreto "$DEPLOYPATH/"
+    - /usr/bin/test -s "$DEPLOYPATH/index.html" -a -s "$DEPLOYPATH/script.js" -a -s "$DEPLOYPATH/.htaccess"
+    - /bin/echo 'Concreto Brasil: deploy concluido'
