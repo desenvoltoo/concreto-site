@@ -16,6 +16,7 @@ deployment:
     - /bin/cp styles.css $DEPLOYPATH/styles.css
     - /bin/cp ux.css $DEPLOYPATH/ux.css
     - /bin/cp shell.css $DEPLOYPATH/shell.css
+    - /bin/cp visuals.css $DEPLOYPATH/visuals.css
     - /bin/cp script.js $DEPLOYPATH/script.js
     - /bin/cp favicon-32.png $DEPLOYPATH/favicon-32.png
     - /bin/cp robots.txt $DEPLOYPATH/robots.txt
