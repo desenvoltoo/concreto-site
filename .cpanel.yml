@@ -7,7 +7,9 @@ deployment:
     - /bin/mkdir -p $DEPLOYPATH/sobre
     - /bin/mkdir -p $DEPLOYPATH/politica-de-privacidade
     - /bin/mkdir -p $DEPLOYPATH/termos
-    - /bin/mkdir -p $DEPLOYPATH/ads
+    - /bin/mkdir -p $DEPLOYPATH/orcamento
+    - /bin/mkdir -p $DEPLOYPATH/concreto-usinado
+    - /bin/mkdir -p $DEPLOYPATH/bombeamento-de-concreto
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp styles.css $DEPLOYPATH
     - /bin/cp ux.css $DEPLOYPATH
@@ -20,4 +22,6 @@ deployment:
     - /bin/cp sobre/index.html $DEPLOYPATH/sobre/index.html
     - /bin/cp politica-de-privacidade/index.html $DEPLOYPATH/politica-de-privacidade/index.html
     - /bin/cp termos/index.html $DEPLOYPATH/termos/index.html
-    - /bin/cp ads/index.html $DEPLOYPATH/ads/index.html
+    - /bin/cp orcamento/index.html $DEPLOYPATH/orcamento/index.html
+    - /bin/cp concreto-usinado/index.html $DEPLOYPATH/concreto-usinado/index.html
+    - /bin/cp bombeamento-de-concreto/index.html $DEPLOYPATH/bombeamento-de-concreto/index.html
