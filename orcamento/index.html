@@ -4,33 +4,58 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b131b">
-  <meta name="description" content="Solicite orçamento de concreto usinado e bombeamento. Informe seu nome e telefone para iniciar o atendimento pelo WhatsApp.">
+  <meta name="description" content="Solicite orçamento de concreto usinado e bombeamento diretamente pelo WhatsApp, sem formulário.">
   <link rel="canonical" href="https://concretobrasils.online/orcamento/">
   <title>Orçamento de Concreto | Concreto Brasil</title>
   <link rel="icon" href="/favicon-32.png?v=20260827" sizes="32x32">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20260827-premium2">
-  <link rel="stylesheet" href="/ux.css?v=20260827-premium2">
-  <link rel="stylesheet" href="/shell.css?v=20260827-1">
+  <link rel="stylesheet" href="/styles.css?v=20260827-premium3">
+  <link rel="stylesheet" href="/ux.css?v=20260827-premium3">
+  <link rel="stylesheet" href="/shell.css?v=20260827-2">
+  <link rel="stylesheet" href="/visuals.css?v=20260827-2">
+  <script>document.documentElement.classList.add('js')</script>
   <style>
-    :root{--ink:#111920;--muted:#68737d;--orange:#f05a28;--line:#dce2e6;--paper:#f4f5f6}body{background:var(--paper);color:var(--ink)}
-    .quote-hero{padding:95px 0 60px;background:#0b131b;color:#fff}.quote-hero span{font-size:11px;letter-spacing:.14em;font-weight:800;color:#ff9a78}.quote-hero h1{font-family:Montserrat,sans-serif;font-size:clamp(46px,6vw,76px);line-height:.98;letter-spacing:-.045em;margin:12px 0 20px;max-width:850px}.quote-hero p{max-width:700px;color:#d8dee4;font-size:18px;line-height:1.7}
-    .quote-main{padding:70px 0 100px}.quote-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:34px;align-items:start}.brief,.form-card{border-radius:26px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 50px rgba(15,24,33,.06)}.brief{padding:36px}.brief h2,.form-card h2{font-family:Montserrat,sans-serif;font-size:30px;line-height:1.05;margin:0 0 14px}.brief>p,.form-card>p{color:var(--muted);line-height:1.65}.brief-list{margin-top:28px;border-top:1px solid var(--line)}.brief-item{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}.brief-item b{color:var(--orange)}.brief-item strong{display:block;margin-bottom:3px}.brief-item span{color:var(--muted);font-size:13px}.form-card{padding:40px}.form-kicker{display:block;color:var(--orange);font-size:10px;letter-spacing:.14em;font-weight:800;margin-bottom:10px}.lead-form{display:grid;gap:16px;margin-top:24px}.form-field{display:grid;gap:7px}.form-field label{font-weight:800;font-size:13px}.form-field input{width:100%;padding:16px;border:1px solid #cfd7df;border-radius:14px;font:inherit;background:#fff;color:#17212b;outline:none}.form-field input:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(240,90,40,.1)}.lead-form button{width:100%;border:0;min-height:56px;border-radius:999px;background:var(--orange);color:#fff;font-weight:900;text-transform:uppercase;cursor:pointer}.form-note{margin:0;color:#7a858f;font-size:12px;line-height:1.5}.form-error{margin:0;padding:12px 14px;border-radius:12px;background:#fff1ec;color:#a13b20;font-size:13px}
-    @media(max-width:850px){.quote-grid{grid-template-columns:1fr}}
-    @media(max-width:650px){.quote-hero{padding:65px 0 40px}.quote-hero h1{font-size:clamp(40px,12vw,52px)}.quote-hero p{font-size:15.5px}.quote-main{padding:40px 0 70px}.brief,.form-card{padding:24px 20px;border-radius:20px}}
+    :root{--ink:#111920;--muted:#68737d;--orange:#f05a28;--line:#dce2e6;--paper:#f4f5f6}
+    body{background:var(--paper);color:var(--ink)}
+    .quote-hero{position:relative;min-height:640px;display:grid;align-items:end;overflow:hidden;background:#0b131b;color:#fff}
+    .quote-hero-media{position:absolute;inset:0}.quote-hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.72) contrast(1.05);transform:scale(1.02)}
+    .quote-hero-media:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,10,15,.97),rgba(5,10,15,.79) 52%,rgba(5,10,15,.30)),linear-gradient(0deg,rgba(5,10,15,.78),transparent 58%)}
+    .quote-hero-inner{position:relative;z-index:2;padding:100px 0 72px;max-width:880px}
+    .quote-kicker{font-size:11px;letter-spacing:.15em;font-weight:800;color:#ff9a78}.quote-hero h1{font-family:Montserrat,sans-serif;font-size:clamp(48px,6.4vw,80px);line-height:.97;letter-spacing:-.045em;margin:12px 0 22px;max-width:850px}.quote-hero p{max-width:680px;color:#d8dee4;font-size:18px;line-height:1.7;margin:0 0 30px}
+    .quote-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:60px;padding:0 28px;border-radius:999px;background:linear-gradient(135deg,#f05a28,#df4716);color:#fff;font-size:14px;font-weight:900;box-shadow:0 16px 38px rgba(240,90,40,.28);transition:transform .2s ease,box-shadow .2s ease}.quote-primary:hover{transform:translateY(-2px);box-shadow:0 20px 44px rgba(240,90,40,.34)}
+    .quote-reassurance{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;color:#c8d0d7;font-size:12px}.quote-reassurance span{display:inline-flex;align-items:center;gap:7px}.quote-reassurance i{width:6px;height:6px;border-radius:50%;background:#ff8a61;display:inline-block}
+    .quote-main{padding:84px 0 100px}.quote-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:34px;align-items:stretch}.brief,.direct-card{border-radius:28px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 50px rgba(15,24,33,.06);overflow:hidden}.brief{padding:38px}.brief h2,.direct-card h2{font-family:Montserrat,sans-serif;font-size:clamp(28px,3vw,38px);line-height:1.05;margin:0 0 14px}.brief>p,.direct-card p{color:var(--muted);line-height:1.65}.brief-list{margin-top:28px;border-top:1px solid var(--line)}.brief-item{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}.brief-item b{color:var(--orange)}.brief-item strong{display:block;margin-bottom:3px}.brief-item span{color:var(--muted);font-size:13px}
+    .direct-card{display:grid;grid-template-rows:230px 1fr}.direct-media{position:relative;overflow:hidden;background:#15202a}.direct-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease}.direct-card:hover .direct-media img{transform:scale(1.035)}.direct-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(7,12,17,.34))}.direct-copy{padding:38px}.direct-copy small{display:block;color:var(--orange);font-size:10px;letter-spacing:.14em;font-weight:800;margin-bottom:10px}.direct-copy .quote-primary{width:100%;margin-top:12px}.direct-note{margin:16px 0 0!important;font-size:12px;color:#7d8790!important;text-align:center}
+    .fast-strip{padding:0 0 90px}.fast-strip-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--line)}.fast-item{padding:28px;background:#fff}.fast-item small{display:block;color:var(--orange);font-weight:800;margin-bottom:7px}.fast-item strong{display:block;font-size:17px;margin-bottom:5px}.fast-item span{color:var(--muted);font-size:13px;line-height:1.5}
+    .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.js .reveal.is-visible{opacity:1;transform:none}
+    @media(max-width:850px){.quote-grid{grid-template-columns:1fr}.fast-strip-inner{grid-template-columns:1fr}.direct-card{grid-template-rows:200px 1fr}}
+    @media(max-width:650px){.quote-hero{min-height:560px}.quote-hero-inner{padding:66px 0 42px}.quote-hero h1{font-size:clamp(40px,12vw,52px)}.quote-hero p{font-size:15.5px;line-height:1.6}.quote-primary{width:100%;min-height:58px;padding:0 20px}.quote-reassurance{gap:10px 16px}.quote-main{padding:42px 0 64px}.brief,.direct-card{border-radius:20px}.brief{padding:24px 20px}.direct-copy{padding:26px 20px}.fast-strip{padding-bottom:58px}.fast-strip-inner{border-radius:18px}.fast-item{padding:22px 20px}}
+    @media(prefers-reduced-motion:reduce){.quote-primary,.direct-media img,.js .reveal{transition:none!important}.js .reveal{opacity:1!important;transform:none!important}}
   </style>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
   <main id="conteudo">
-    <section class="quote-hero"><div class="container"><span>ORÇAMENTO</span><h1>Conte o básico. A gente organiza o próximo passo.</h1><p>Preencha nome e telefone para continuar no WhatsApp e enviar os detalhes da obra.</p></div></section>
-    <section class="quote-main"><div class="container quote-grid"><aside class="brief"><h2>Tenha estas informações em mãos.</h2><p>Elas ajudam a deixar a cotação mais objetiva.</p><div class="brief-list"><div class="brief-item"><b>01</b><div><strong>Cidade da obra</strong><span>Município da concretagem.</span></div></div><div class="brief-item"><b>02</b><div><strong>Volume aproximado</strong><span>Quantidade estimada em m³.</span></div></div><div class="brief-item"><b>03</b><div><strong>Data desejada</strong><span>Quando pretende realizar o serviço.</span></div></div><div class="brief-item"><b>04</b><div><strong>Necessidade</strong><span>Concreto, bombeamento ou ambos.</span></div></div></div></aside>
-      <section class="form-card"><span class="form-kicker">INICIAR COTAÇÃO</span><h2>Seus dados de contato.</h2><p>Depois de continuar, o atendimento segue diretamente pelo WhatsApp.</p><form class="lead-form" id="quote-form" novalidate><div class="form-field"><label for="lead-name">Nome</label><input id="lead-name" name="name" type="text" autocomplete="name" minlength="2" required placeholder="Seu nome"></div><div class="form-field"><label for="lead-phone">Telefone</label><input id="lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(11) 99999-9999"></div><p class="form-error" hidden></p><button type="submit">Continuar no WhatsApp</button><p class="form-note">Ao continuar, seus dados serão usados para iniciar o atendimento e para mensuração de conversões, conforme nossa <a href="/politica-de-privacidade/">Política de Privacidade</a>.</p></form></section>
-    </div></section>
+    <section class="quote-hero">
+      <div class="quote-hero-media"><img class="product-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=85" alt="Concretagem em obra" fetchpriority="high"></div>
+      <div class="container"><div class="quote-hero-inner reveal"><span class="quote-kicker">ORÇAMENTO DIRETO</span><h1>Da página para o WhatsApp. Sem formulário.</h1><p>Clique uma vez e fale diretamente com o atendimento. Se já souber, tenha cidade, volume aproximado e data desejada em mãos.</p><a class="quote-primary js-whatsapp" data-message="Olá! Quero solicitar um orçamento de concreto. Minha cidade é: " href="#">Solicitar orçamento no WhatsApp <span aria-hidden="true">→</span></a><div class="quote-reassurance"><span><i></i>Sem cadastro</span><span><i></i>Sem preencher telefone</span><span><i></i>Atendimento direto</span></div></div></div>
+    </section>
+
+    <section class="quote-main">
+      <div class="container quote-grid">
+        <aside class="brief reveal"><h2>O que ajuda na cotação.</h2><p>Você não precisa preencher nada no site. Se tiver essas informações, envie direto na conversa.</p><div class="brief-list"><div class="brief-item"><b>01</b><div><strong>Cidade da obra</strong><span>Município onde será feita a concretagem.</span></div></div><div class="brief-item"><b>02</b><div><strong>Volume aproximado</strong><span>Quantidade estimada em m³, se souber.</span></div></div><div class="brief-item"><b>03</b><div><strong>Data desejada</strong><span>Quando pretende realizar o serviço.</span></div></div><div class="brief-item"><b>04</b><div><strong>Necessidade</strong><span>Concreto usinado, bombeamento ou ambos.</span></div></div></div></aside>
+
+        <section class="direct-card reveal"><div class="direct-media"><img class="product-img" src="https://images.unsplash.com/photo-1531835551805-16d864c8d311?auto=format&fit=crop&w=1200&q=84" alt="Operação em obra" loading="lazy"></div><div class="direct-copy"><small>UM CLIQUE</small><h2>Continue direto no WhatsApp.</h2><p>A mensagem já abre preparada para você informar a cidade da obra e seguir com o atendimento.</p><a class="quote-primary js-whatsapp" data-message="Olá! Quero solicitar um orçamento de concreto. Minha cidade é: " href="#">Abrir WhatsApp <span aria-hidden="true">→</span></a><p class="direct-note">O clique é medido como conversão para avaliar o desempenho das campanhas.</p></div></section>
+      </div>
+    </section>
+
+    <section class="fast-strip"><div class="container"><div class="fast-strip-inner reveal"><div class="fast-item"><small>01</small><strong>Escolha a solução</strong><span>Concreto, bombeamento ou os dois.</span></div><div class="fast-item"><small>02</small><strong>Envie os dados da obra</strong><span>Direto na conversa, sem formulário intermediário.</span></div><div class="fast-item"><small>03</small><strong>Receba o atendimento</strong><span>A disponibilidade é validada conforme sua solicitação.</span></div></div></div></section>
   </main>
+
   <footer class="footer"><div class="container footer-grid"><div><p>Concreto usinado e bombeamento com atendimento comercial direto.</p></div><div><strong>Navegação</strong><a href="/produtos/">Produtos</a><a href="/sobre/">Sobre</a></div><div><strong>Atendimento</strong><a href="/orcamento/">Orçamento</a></div></div><div class="container footer-bottom"><span>© <span id="year"></span> Concreto Brasil.</span></div></footer>
-  <script src="/script.js?v=20260827-shell1"></script>
+  <script src="/script.js?v=20260827-direct1"></script>
 </body>
 </html>
