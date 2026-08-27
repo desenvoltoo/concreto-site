@@ -3,7 +3,8 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home2/ericod74/public_html/concretobrasils.online/
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/rm -rf $DEPLOYPATH/ads
+    # Deploy limpo: remove tudo da publicação anterior, preservando apenas .well-known/ para AutoSSL/ACME.
+    - /usr/bin/find $DEPLOYPATH -mindepth 1 -maxdepth 1 ! -name '.well-known' -exec /bin/rm -rf {} \;
     - /bin/mkdir -p $DEPLOYPATH/produtos
     - /bin/mkdir -p $DEPLOYPATH/sobre
     - /bin/mkdir -p $DEPLOYPATH/politica-de-privacidade
@@ -11,15 +12,15 @@ deployment:
     - /bin/mkdir -p $DEPLOYPATH/orcamento
     - /bin/mkdir -p $DEPLOYPATH/concreto-usinado
     - /bin/mkdir -p $DEPLOYPATH/bombeamento-de-concreto
-    - /bin/cp index.html $DEPLOYPATH
-    - /bin/cp styles.css $DEPLOYPATH
-    - /bin/cp ux.css $DEPLOYPATH
-    - /bin/cp shell.css $DEPLOYPATH
-    - /bin/cp script.js $DEPLOYPATH
-    - /bin/cp favicon-32.png $DEPLOYPATH
-    - /bin/cp robots.txt $DEPLOYPATH
-    - /bin/cp sitemap.xml $DEPLOYPATH
-    - /bin/cp .htaccess $DEPLOYPATH
+    - /bin/cp index.html $DEPLOYPATH/index.html
+    - /bin/cp styles.css $DEPLOYPATH/styles.css
+    - /bin/cp ux.css $DEPLOYPATH/ux.css
+    - /bin/cp shell.css $DEPLOYPATH/shell.css
+    - /bin/cp script.js $DEPLOYPATH/script.js
+    - /bin/cp favicon-32.png $DEPLOYPATH/favicon-32.png
+    - /bin/cp robots.txt $DEPLOYPATH/robots.txt
+    - /bin/cp sitemap.xml $DEPLOYPATH/sitemap.xml
+    - /bin/cp .htaccess $DEPLOYPATH/.htaccess
     - /bin/cp produtos/index.html $DEPLOYPATH/produtos/index.html
     - /bin/cp sobre/index.html $DEPLOYPATH/sobre/index.html
     - /bin/cp politica-de-privacidade/index.html $DEPLOYPATH/politica-de-privacidade/index.html
