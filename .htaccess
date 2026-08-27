@@ -16,22 +16,24 @@ RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
 RewriteRule ^(.*/)?index\.html$ https://concretobrasils.online/$1 [R=301,L,NE]
 </IfModule>
 
-# A landing /ads/ existe somente para campanhas e não deve concorrer no índice orgânico.
 <IfModule mod_setenvif.c>
-SetEnvIf Request_URI "^/ads(?:/|$)" NOINDEX_ADS=1
-</IfModule>
-<IfModule mod_headers.c>
-Header set X-Robots-Tag "noindex, follow" env=NOINDEX_ADS
-
 # Declara explicitamente a URL canônica das páginas indexáveis.
 SetEnvIf Request_URI "^/$" CANON_HOME=1
 SetEnvIf Request_URI "^/produtos/?$" CANON_PRODUTOS=1
+SetEnvIf Request_URI "^/concreto-usinado/?$" CANON_CONCRETO=1
+SetEnvIf Request_URI "^/bombeamento-de-concreto/?$" CANON_BOMBEAMENTO=1
+SetEnvIf Request_URI "^/orcamento/?$" CANON_ORCAMENTO=1
 SetEnvIf Request_URI "^/sobre/?$" CANON_SOBRE=1
 SetEnvIf Request_URI "^/politica-de-privacidade/?$" CANON_PRIVACIDADE=1
 SetEnvIf Request_URI "^/termos/?$" CANON_TERMOS=1
+</IfModule>
 
+<IfModule mod_headers.c>
 Header set Link "<https://concretobrasils.online/>; rel=\"canonical\"" env=CANON_HOME
 Header set Link "<https://concretobrasils.online/produtos/>; rel=\"canonical\"" env=CANON_PRODUTOS
+Header set Link "<https://concretobrasils.online/concreto-usinado/>; rel=\"canonical\"" env=CANON_CONCRETO
+Header set Link "<https://concretobrasils.online/bombeamento-de-concreto/>; rel=\"canonical\"" env=CANON_BOMBEAMENTO
+Header set Link "<https://concretobrasils.online/orcamento/>; rel=\"canonical\"" env=CANON_ORCAMENTO
 Header set Link "<https://concretobrasils.online/sobre/>; rel=\"canonical\"" env=CANON_SOBRE
 Header set Link "<https://concretobrasils.online/politica-de-privacidade/>; rel=\"canonical\"" env=CANON_PRIVACIDADE
 Header set Link "<https://concretobrasils.online/termos/>; rel=\"canonical\"" env=CANON_TERMOS
