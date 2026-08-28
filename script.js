@@ -3,6 +3,7 @@ const WHATSAPP_NUMBER = '5511956023851';
 const DEFAULT_MESSAGE = 'Olá! Vim pelo site e gostaria de solicitar um orçamento para minha obra. Minha cidade é: ';
 const GOOGLE_ADS_ID = 'AW-18387900627';
 const GOOGLE_ADS_SEND_TO = 'AW-18387900627/GyYTCIGm3OIcENOxhMBE';
+const CONCRETE_PUMP_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/4/4c/Construction_site_with_concrete_pump_truck.JPG';
 
 function whatsappUrl(message = DEFAULT_MESSAGE){
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -134,6 +135,15 @@ function setupWhatsappLinks(){
   });
 }
 
+function setupContentImages(){
+  document.querySelectorAll('img').forEach(img => {
+    const src = img.getAttribute('src') || '';
+    if(!src.includes('photo-1531835551805-16d864c8d311')) return;
+    img.src = CONCRETE_PUMP_IMAGE;
+    img.alt = 'Bombeamento de concreto em operação em obra';
+  });
+}
+
 function setupReveal(){
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const items = document.querySelectorAll('.reveal');
@@ -208,6 +218,7 @@ function setupImageFallback(){
 function boot(){
   installShell();
   setupWhatsappLinks();
+  setupContentImages();
   setupReveal();
   setupProgress();
   setupAnchors();
