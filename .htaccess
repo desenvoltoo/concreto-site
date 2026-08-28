@@ -30,13 +30,26 @@ RewriteRule ^termos/?$ termos/index.html [L]
 </IfModule>
 
 <IfModule mod_headers.c>
-<FilesMatch "\.(?:html|css|js)$">
-Header set Cache-Control "no-cache, no-store, must-revalidate"
-Header set Pragma "no-cache"
-Header set Expires "0"
+# Identificador temporário para confirmar qual versão o servidor está entregando.
+Header always set X-Concreto-Deploy "20260828-cache3"
+
+# Evita servir HTML/CSS/JS antigos em navegador, proxy ou cache intermediário.
+<FilesMatch "\.(?:html|css|js|json|xml|txt)$">
+Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, s-maxage=0"
+Header always set Pragma "no-cache"
+Header always set Expires "0"
 </FilesMatch>
 
+# Durante o diagnóstico, também força revalidação das imagens.
 <FilesMatch "\.(?:png|jpg|jpeg|webp|svg|ico)$">
-Header set Cache-Control "public, max-age=604800"
+Header always set Cache-Control "no-cache, must-revalidate, max-age=0"
 </FilesMatch>
+
+Header unset ETag
 </IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive Off
+</IfModule>
+
+FileETag None
