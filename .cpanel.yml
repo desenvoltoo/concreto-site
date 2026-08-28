@@ -3,7 +3,24 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home2/ericod74/public_html/concretobrasils.online/
     - /bin/mkdir -p $DEPLOYPATH
-    - /usr/bin/find $DEPLOYPATH -mindepth 1 -maxdepth 1 ! -name '.well-known' -exec /bin/rm -rf {} +
+    - /bin/rm -rf $DEPLOYPATH/produtos
+    - /bin/rm -rf $DEPLOYPATH/sobre
+    - /bin/rm -rf $DEPLOYPATH/politica-de-privacidade
+    - /bin/rm -rf $DEPLOYPATH/termos
+    - /bin/rm -rf $DEPLOYPATH/concreto-usinado
+    - /bin/rm -rf $DEPLOYPATH/bombeamento-de-concreto
+    - /bin/rm -rf $DEPLOYPATH/orcamento
+    - /bin/rm -f $DEPLOYPATH/index.html
+    - /bin/rm -f $DEPLOYPATH/styles.css
+    - /bin/rm -f $DEPLOYPATH/ux.css
+    - /bin/rm -f $DEPLOYPATH/shell.css
+    - /bin/rm -f $DEPLOYPATH/visuals.css
+    - /bin/rm -f $DEPLOYPATH/script.js
+    - /bin/rm -f $DEPLOYPATH/favicon-32.png
+    - /bin/rm -f $DEPLOYPATH/robots.txt
+    - /bin/rm -f $DEPLOYPATH/sitemap.xml
+    - /bin/rm -f $DEPLOYPATH/deploy-version.txt
+    - /bin/rm -f $DEPLOYPATH/.htaccess
     - /bin/mkdir -p $DEPLOYPATH/produtos $DEPLOYPATH/sobre $DEPLOYPATH/politica-de-privacidade $DEPLOYPATH/termos $DEPLOYPATH/concreto-usinado $DEPLOYPATH/bombeamento-de-concreto
     - /bin/cp -f index.html $DEPLOYPATH/index.html
     - /bin/cp -f styles.css $DEPLOYPATH/styles.css
