@@ -1,0 +1,2 @@
+concreto-site deploy 20260828-cache3
+HEAD marker para validar o arquivo efetivamente publicado pelo cPanel.
