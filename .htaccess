@@ -13,8 +13,8 @@ RewriteRule ^ https://concretobrasils.online%{REQUEST_URI} [R=301,L,NE]
 # Home explícita.
 RewriteRule ^$ index.html [L]
 
-# URL antiga de orçamento não possui mais página própria.
-RewriteRule ^orcamento/?$ https://concretobrasils.online/ [R=301,L,NE]
+# A página antiga de orçamento foi removida de forma definitiva.
+RewriteRule ^orcamento/?$ - [G,L]
 
 # Remove index.html apenas quando solicitado diretamente pelo navegador.
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
