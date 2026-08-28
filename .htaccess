@@ -13,6 +13,9 @@ RewriteRule ^ https://concretobrasils.online%{REQUEST_URI} [R=301,L,NE]
 # Home explícita.
 RewriteRule ^$ index.html [L]
 
+# URL antiga de orçamento não possui mais página própria.
+RewriteRule ^orcamento/?$ https://concretobrasils.online/ [R=301,L,NE]
+
 # Remove index.html apenas quando solicitado diretamente pelo navegador.
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
 RewriteRule ^(.*/)?index\.html$ https://concretobrasils.online/$1 [R=301,L,NE]
@@ -20,7 +23,6 @@ RewriteRule ^(.*/)?index\.html$ https://concretobrasils.online/$1 [R=301,L,NE]
 # Páginas públicas.
 RewriteRule ^produtos/?$ produtos/index.html [L]
 RewriteRule ^sobre/?$ sobre/index.html [L]
-RewriteRule ^orcamento/?$ orcamento/index.html [L]
 RewriteRule ^concreto-usinado/?$ concreto-usinado/index.html [L]
 RewriteRule ^bombeamento-de-concreto/?$ bombeamento-de-concreto/index.html [L]
 RewriteRule ^politica-de-privacidade/?$ politica-de-privacidade/index.html [L]
