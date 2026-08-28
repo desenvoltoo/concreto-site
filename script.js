@@ -4,6 +4,12 @@ const DEFAULT_MESSAGE = 'Olá! Vim pelo site e gostaria de solicitar um orçamen
 const GOOGLE_ADS_ID = 'AW-18387900627';
 const GOOGLE_ADS_SEND_TO = 'AW-18387900627/GyYTCIGm3OIcENOxhMBE';
 
+function whatsappUrl(message = DEFAULT_MESSAGE){
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+const DEFAULT_WHATSAPP_URL = whatsappUrl();
+
 function ensureGoogleTag(){
   window.dataLayer = window.dataLayer || [];
   if(typeof window.gtag !== 'function'){
@@ -20,30 +26,29 @@ function ensureGoogleTag(){
 }
 ensureGoogleTag();
 
-function whatsappUrl(message = DEFAULT_MESSAGE){
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-}
-
 function reportGoogleAdsConversion(url){
-  if(GOOGLE_ADS_SEND_TO && typeof window.gtag === 'function'){
-    let navigated = false;
-    const go = () => {
-      if(navigated) return;
-      navigated = true;
-      window.location.href = url;
-    };
+  if(!(GOOGLE_ADS_SEND_TO && typeof window.gtag === 'function')){
+    window.location.href = url;
+    return;
+  }
+  let navigated = false;
+  const go = () => {
+    if(navigated) return;
+    navigated = true;
+    window.location.href = url;
+  };
+  try{
     window.gtag('event','conversion',{
       send_to:GOOGLE_ADS_SEND_TO,
       value:1.0,
       currency:'BRL',
       event_callback:go,
-      event_timeout:650
+      event_timeout:450
     });
-    window.setTimeout(go,700);
-    return true;
+    window.setTimeout(go,500);
+  }catch(_){
+    go();
   }
-  window.location.href = url;
-  return true;
 }
 
 function currentSection(){
@@ -60,12 +65,13 @@ function installShell(){
   if(!document.querySelector('link[href^="/shell.css"]')){
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/shell.css?v=20260827-3';
+    link.href = '/shell.css?v=20260828-wa1';
     document.head.appendChild(link);
   }
 
   const active = currentSection();
   const current = name => active === name ? ' aria-current="page"' : '';
+  const wa = DEFAULT_WHATSAPP_URL;
   const shell = document.createElement('header');
   shell.className = 'cb-shell';
   shell.id = 'site-header';
@@ -73,7 +79,7 @@ function installShell(){
     <div class="cb-topbar">
       <div class="cb-topbar-inner">
         <span>Concreto usinado e bombeamento para obras residenciais, comerciais e industriais</span>
-        <a class="js-whatsapp" href="#">Solicitar orçamento <span aria-hidden="true">→</span></a>
+        <a class="js-whatsapp" href="${wa}">Solicitar orçamento <span aria-hidden="true">→</span></a>
       </div>
     </div>
     <div class="cb-nav">
@@ -86,9 +92,9 @@ function installShell(){
         <a href="/produtos/"${current('produtos')}>Produtos</a>
         <a href="/sobre/"${current('sobre')}>Sobre</a>
         <a href="/#faq">Dúvidas</a>
-        <a class="cb-mobile-budget js-whatsapp" href="#">Solicitar orçamento</a>
+        <a class="cb-mobile-budget js-whatsapp" href="${wa}">Solicitar orçamento</a>
       </nav>
-      <a class="cb-budget js-whatsapp" href="#">Orçamento</a>
+      <a class="cb-budget js-whatsapp" href="${wa}">Orçamento</a>
       <button class="cb-toggle" type="button" aria-label="Abrir menu" aria-controls="cb-main-nav" aria-expanded="false"><i></i><i></i><i></i></button>
     </div>`;
 
@@ -144,6 +150,7 @@ function setupWhatsappLinks(){
     link.removeAttribute('target');
     link.removeAttribute('rel');
     link.addEventListener('click',event => {
+      if(!(GOOGLE_ADS_SEND_TO && typeof window.gtag === 'function')) return;
       event.preventDefault();
       reportGoogleAdsConversion(url);
     });
