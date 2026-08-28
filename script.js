@@ -31,12 +31,14 @@ function reportGoogleAdsConversion(url){
     window.location.href = url;
     return;
   }
+
   let navigated = false;
   const go = () => {
     if(navigated) return;
     navigated = true;
     window.location.href = url;
   };
+
   try{
     window.gtag('event','conversion',{
       send_to:GOOGLE_ADS_SEND_TO,
@@ -65,7 +67,7 @@ function installShell(){
   if(!document.querySelector('link[href^="/shell.css"]')){
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/shell.css?v=20260828-wa1';
+    link.href = '/shell.css?v=20260828-wa2';
     document.head.appendChild(link);
   }
 
@@ -140,15 +142,11 @@ function installShell(){
 }
 
 function setupWhatsappLinks(){
-  const links = document.querySelectorAll('.js-whatsapp, a[href="/orcamento/"], a[href="/orcamento"]');
-  links.forEach(link => {
+  document.querySelectorAll('.js-whatsapp').forEach(link => {
     if(link.dataset.waBound === '1') return;
     link.dataset.waBound = '1';
-    link.classList.add('js-whatsapp');
     const url = whatsappUrl(link.dataset.message || DEFAULT_MESSAGE);
     link.href = url;
-    link.removeAttribute('target');
-    link.removeAttribute('rel');
     link.addEventListener('click',event => {
       if(!(GOOGLE_ADS_SEND_TO && typeof window.gtag === 'function')) return;
       event.preventDefault();
