@@ -14,6 +14,7 @@ deployment:
     - /bin/cp -f favicon-32.png $DEPLOYPATH/favicon-32.png
     - /bin/cp -f robots.txt $DEPLOYPATH/robots.txt
     - /bin/cp -f sitemap.xml $DEPLOYPATH/sitemap.xml
+    - /bin/cp -f deploy-version.txt $DEPLOYPATH/deploy-version.txt
     - /bin/cp -f .htaccess $DEPLOYPATH/.htaccess
     - /bin/cp -f produtos/index.html $DEPLOYPATH/produtos/index.html
     - /bin/cp -f sobre/index.html $DEPLOYPATH/sobre/index.html
