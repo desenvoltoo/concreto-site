@@ -1,9 +1,22 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home2/ericod74/public_html/concretobrasils.online
-    - /bin/mkdir -p "$DEPLOYPATH"
-    - /usr/bin/rsync -a --delete --exclude='.well-known/' --exclude='.git/' --exclude='.github/' --exclude='.cpanel.yml' --exclude='.nojekyll' --exclude='README.md' ./ "$DEPLOYPATH/"
-    - /usr/bin/test -s "$DEPLOYPATH/index.html" -a -s "$DEPLOYPATH/script.js" -a -s "$DEPLOYPATH/.htaccess"
-    - /bin/chmod 755 "$DEPLOYPATH"
-    - /bin/echo 'Concreto Brasil: deploy sincronizado concluido'
+    - export DEPLOYPATH=/home2/ericod74/public_html/concretobrasils.online/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp styles.css $DEPLOYPATH
+    - /bin/cp ux.css $DEPLOYPATH
+    - /bin/cp shell.css $DEPLOYPATH
+    - /bin/cp visuals.css $DEPLOYPATH
+    - /bin/cp script.js $DEPLOYPATH
+    - /bin/cp favicon-32.png $DEPLOYPATH
+    - /bin/cp robots.txt $DEPLOYPATH
+    - /bin/cp sitemap.xml $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
+    - /bin/cp -R produtos $DEPLOYPATH
+    - /bin/cp -R sobre $DEPLOYPATH
+    - /bin/cp -R politica-de-privacidade $DEPLOYPATH
+    - /bin/cp -R termos $DEPLOYPATH
+    - /bin/cp -R orcamento $DEPLOYPATH
+    - /bin/cp -R concreto-usinado $DEPLOYPATH
+    - /bin/cp -R bombeamento-de-concreto $DEPLOYPATH
