@@ -26,31 +26,15 @@ function ensureGoogleTag(){
 }
 ensureGoogleTag();
 
-function reportGoogleAdsConversion(url){
-  if(!(GOOGLE_ADS_SEND_TO && typeof window.gtag === 'function')){
-    window.location.href = url;
-    return;
-  }
-
-  let navigated = false;
-  const go = () => {
-    if(navigated) return;
-    navigated = true;
-    window.location.href = url;
-  };
-
+function trackGoogleAdsConversion(){
+  if(!(GOOGLE_ADS_SEND_TO && typeof window.gtag === 'function')) return;
   try{
     window.gtag('event','conversion',{
       send_to:GOOGLE_ADS_SEND_TO,
       value:1.0,
-      currency:'BRL',
-      event_callback:go,
-      event_timeout:450
+      currency:'BRL'
     });
-    window.setTimeout(go,500);
-  }catch(_){
-    go();
-  }
+  }catch(_){}
 }
 
 function currentSection(){
@@ -145,13 +129,8 @@ function setupWhatsappLinks(){
   document.querySelectorAll('.js-whatsapp').forEach(link => {
     if(link.dataset.waBound === '1') return;
     link.dataset.waBound = '1';
-    const url = whatsappUrl(link.dataset.message || DEFAULT_MESSAGE);
-    link.href = url;
-    link.addEventListener('click',event => {
-      if(!(GOOGLE_ADS_SEND_TO && typeof window.gtag === 'function')) return;
-      event.preventDefault();
-      reportGoogleAdsConversion(url);
-    });
+    link.href = whatsappUrl(link.dataset.message || DEFAULT_MESSAGE);
+    link.addEventListener('click',trackGoogleAdsConversion,{passive:true});
   });
 }
 
